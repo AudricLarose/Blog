@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <?php
+ include_once 'connexion.model.php';
+ include_once 'view.model.php';?>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -18,20 +21,28 @@
 
 
 <body>
+    <div class="bloc_header "></div>
+<div class="bar_menu "></div>
+<div class='big_box'>
+<div class='container_chapitre isbordered'></div> 
+<div class="container_text ">
+<?php
+$affichaged= new affichage;
+$affiche=$affichaged->spot();
+foreach($affiche as $affiches){
+    $extrait=$affichaged->extrait($affiches["body"], 200 );
+  echo '<div class="bloc_extrait_index  ">';
+      echo ' <div class="bloc_titre  "><h2>'.$affiches["title"].'</h2></div>';
+       echo '<div class="sous_bloc_date-text  ">';
+         // echo '  <div class="bloc_date  ">'.$affiches["date"].'</div> ';
+           echo '  <div class="bloc_text  "><p>'.$extrait.'<strong>...[Lire la suite ]</strong></p>';
+          echo '   </div></div></div> ';
 
-<div class="bar_menu isbordered"></div>
-<div class="container isbordered">
-  <div class="bloc_extrait_index isbordered">
-      <div class="bloc_titre isbordered"></div>
-      <div class="sous_bloc_date-text isbordered"></div>
-<div class="bloc_date isbordered"></div> 
-<div class="bloc_text isbordered">
-<div class="bloc_lire-la-suite isbordered"></div></div> 
+}
+    ?>
+</div></div>
 
-
-  </div> 
-</div>
-
+          <div class="bar_footer  "></div> 
 
 
 </body>

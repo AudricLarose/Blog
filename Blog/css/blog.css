@@ -1,32 +1,42 @@
 body {
 	background-color : #fffbf1;
 }
+h2, p {
+	font-family: "century", times;
+}
 
+.bloc_header{
+	width: 100%;
+	height: 150px;
+
+}
 .bar_menu{
 	width:100%;
-	height: 100px;
+	height: 50px;
 	position : relative;
-	top: 150px;
 	background-color : white;
 
 }
 
+.big_box{
+	display: flex;
+	flex-flow: row;
+}
 
-.container{
+.container_text{
+	display: inline-block;
 max-width : 1200px;
-	margin: 0 auto;
 	width : 70%;
-height: 1100px;
+height: auto;
 }
 
 .bloc_extrait_index{
-width : 50%;
-height: 250px;
+width : 75%;
+height: 450px;
 	margin : 0 auto ;
 	display : flex ;
-	flex-flow: column wrap;
-	justify-content : center;
-		background-color : white;
+	flex-flow: column ;
+	background-color : #fcf9f3;
 
 
 }
@@ -34,13 +44,15 @@ height: 250px;
 .bloc_titre {
 	width: 100%;
 	height : 50px;
+	text-align: center;
+
 }
 
 .sous_bloc_date-text{
 	width : 100%;
-	height: 200px;
+	height: 400px;
 	display: flex;
-	flex-flow : column wrap;
+	flex-flow : column;
 
 }
 .bloc_date{
@@ -51,10 +63,13 @@ height: 250px;
 
 .bloc_text{
 	width : 100%;
-	height : 100px;
+    height: 350px;
 	display : flex;
-	justify-content: flex-end;
-
+	justify-content: flex-start;
+	    align-items: flex-start;
+	    overflow: hidden;
+	    text-align: justify;
+	    padding: 20px 0;
 }
 .isbordered{
 	border :  1px black solid;
@@ -62,5 +77,25 @@ height: 250px;
 .bloc_lire-la-suite{
 	width : 20%;
 	height: 30px;
+	display: flex;
+	align-self: flex-end;
 	
+}
+.bar_footer{
+	width:100%;
+	height: 50px;
+	position : relative;
+	display: flex;
+	align-self: flex-end;
+	top: 800px;
+	background-color : white;
+}
+
+.container_chapitre{
+	position: relative;
+	top: 0;
+max-width : 1200px;
+display: inline-block;
+	width : 15%;
+height: 1000px;
 }
