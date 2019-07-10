@@ -1,10 +1,20 @@
 body {
 	background-color : #fffbf1;
 }
-h2, p {
+h3, h2, p , a{
 	font-family: "century", times;
 }
+h3{
+	margin: 25px 50px;
+}
+a{
+	text-decoration: none;
+	color: black;
 
+}
+textarea{
+margin: 0 auto;
+}
 .bloc_header{
 	width: 100%;
 	height: 150px;
@@ -12,27 +22,41 @@ h2, p {
 }
 .bar_menu{
 	width:100%;
-	height: 50px;
+	height: 50px;wid
 	position : relative;
 	background-color : white;
 
 }
-
+.texte_colonne{
+	margin-bottom: 100px;
+}
+.conversa{
+	background-color:#F2F2F2;
+ width: 100%;
+ height: auto;
+  padding: 0 20px;
+}
 .big_box{
 	display: flex;
-	flex-flow: row;
+	flex-flow: row wrap;
 }
-
+.marge1{
+	width:70%;
+}
+.marge2{
+	margin: 50px auto;
+	width: 50%;
+}
 .container_text{
+text-align: justify;
 	display: inline-block;
 max-width : 1200px;
-	width : 70%;
 height: auto;
 }
 
 .bloc_extrait_index{
-width : 75%;
-height: 450px;
+	width : 75%;
+	height: 450px;
 	margin : 0 auto ;
 	display : flex ;
 	flex-flow: column ;
@@ -98,4 +122,9 @@ max-width : 1200px;
 display: inline-block;
 	width : 15%;
 height: 1000px;
+}
+
+.auteur{
+	color: #356fa6;
+	font-size: 18px;
 }

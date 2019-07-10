@@ -22,10 +22,14 @@
 
 <body>
     <div class="bloc_header "></div>
-<div class="bar_menu "></div>
+<div class="bar_menu ">
+
+</div>
 <div class='big_box'>
-<div class='container_chapitre isbordered'></div> 
-<div class="container_text ">
+ <?php include_once 'side_menu.view.php';?>
+
+
+<div class="container_text marge1 ">
 <?php
 $affichaged= new affichage;
 $affiche=$affichaged->spot();
@@ -35,7 +39,7 @@ foreach($affiche as $affiches){
       echo ' <div class="bloc_titre  "><h2>'.$affiches["title"].'</h2></div>';
        echo '<div class="sous_bloc_date-text  ">';
          // echo '  <div class="bloc_date  ">'.$affiches["date"].'</div> ';
-           echo '  <div class="bloc_text  "><p>'.$extrait.'<strong>...[Lire la suite ]</strong></p>';
+           echo '  <div class="bloc_text  "><p>'.$extrait.'<a href="page.view.php?id='.$affiches["id"].'"><strong>... [Lire la suite ]</strong></a></p>';
           echo '   </div></div></div> ';
 
 }
