@@ -1,17 +1,15 @@
 <?php
  include_once 'connexion.model.php';
 class affichage extends Connexion {
-	public function spot (){	
-		$req='SELECT * FROM posts4 ORDER BY id' ;
+	public function spot ($x){	
+		$req='SELECT * FROM '.$x.' ORDER BY id' ;
 		$resultat=$this->connected()->query($req);
-	while ($x=$resultat->fetch()){
+	if($resultat->rowCount()){
+		while ($x=$resultat->fetch()){
 				$data[]=$x;
-	
-
 			}
 		return $data;
-
-		
+}
 	}
 	public function extrait($x,$y){
 		
@@ -20,11 +18,11 @@ $extr[$y-1]=" ";
 $extrait=implode(" ", $extr);
 return $extrait;
 	}
-	public function lecture(){
+	public function lecture($x){
 		if (isset($_GET['id'])){
 		$id=$_GET['id'];
 		$ide=intval($id);
-		$req='SELECT * FROM posts4 WHERE id='.$ide;
+		$req='SELECT * FROM '.$x.' WHERE id='.$ide;
 		$resultat=$this->connected()->query($req);
 		if($resultat->rowCount()){
 		while ($x=$resultat->fetch()){
@@ -44,6 +42,7 @@ if($resultat->rowCount()){
 		while ($x=$resultat->fetch()){
 				$data[]=$x;
 			}
+
 		return $data;
 }}
  public function commentaire (){
@@ -113,8 +112,36 @@ public function transforme (){
 
  }
 
-}
+public function antidoublons($x,$y){
+	$recherche= $this->spot($x);
+	var_dump($recherche);
+	var_dump($x);
+	var_dump($y);
+	foreach ($recherche as $recherches) {
 
+	if (in_array($y,$recherches)){
+		echo "yes !";
+		exit();
+	}}
+
+}
+public function ajouter_brouillon (){
+ 	$titre =$_POST['titre_admin'];
+ 	$nom =$_POST['texte_admin'];
+	$req="INSERT INTO brouillon (body, title) VALUES ('$nom','$titre')"; 
+	echo'ajouter brouillon';
+	$resultat=$this->connected()->query($req);
+
+ }
+ public function ajouter_chapitre (){
+ 	$titre =$_POST['titre_admin'];
+ 	$nom =$_POST['texte_admin'];
+	$req="INSERT INTO posts4 (body, title) VALUES ('$nom','$titre')"; 
+	echo'chapitre ajouter';
+	$resultat=$this->connected()->query($req);
+
+ }
+}
 if (isset($_POST['commentaire'])){
 	$action =new affichage;
 	$action->commentaire();
@@ -126,10 +153,8 @@ if (isset($_POST['supprimer'])){
 if (isset($_POST['maj'])){ 
 $paragraphe = new affichage;
 $magie=$paragraphe->modifier();
-var_dump($magie);
 $bodys=$magie[0]['commentaire'];
 $id=$magie[0]['id'];
-var_dump($id);
 echo "<form action='view.model.php' method='post'>
 <select name='id' id=''><br /><option name='id' value='$id' >$id</option></select><textarea name='body' cols='30' rows='10'>$bodys</textarea><br /> <button type='submit' name='modifier'>affichageer</button>
 </form>";
@@ -142,3 +167,14 @@ if (isset($_POST['signaler'])){
 	$paragraphe=new affichage;
 	$paragraphe->signale();
 }
+
+if (isset($_POST['new_chapitre'])){
+	$action =new affichage;
+	$action->ajouter_chapitre();
+} 
+if (isset($_POST['sauvegarde'])){
+	$action =new affichage;
+	 	$titre =$_POST['titre_admin'];
+	$action->antidoublons('brouillon',$titre);
+
+}   

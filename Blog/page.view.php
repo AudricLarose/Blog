@@ -36,7 +36,7 @@
   <div class='texte_colonne'>
    <?php
     $show = new affichage;
-$texto = $show->lecture();
+$texto = $show->lecture('posts4');
     foreach($texto as $textos){
  echo $textos['body'] ;   
 }

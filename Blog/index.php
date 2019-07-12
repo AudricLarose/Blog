@@ -32,7 +32,7 @@
 <div class="container_text marge1 ">
 <?php
 $affichaged= new affichage;
-$affiche=$affichaged->spot();
+$affiche=$affichaged->spot('posts4');
 foreach($affiche as $affiches){
     $extrait=$affichaged->extrait($affiches["body"], 200 );
   echo '<div class="bloc_extrait_index  ">';

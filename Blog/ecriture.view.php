@@ -38,16 +38,31 @@
   <div class='texte_colonne'>
    
 </div> 
+<?php 
+if (isset($_GET['id'])){
+$brouill= new affichage;
+$brouillon=$brouill->lecture('brouillon');
+ ?>
 <form action="view.model.php " method="POST">
-  <button name="New_chapitre" value="Nouveau chapitre">Nouveau chapitre</button>
-  <button name="Sauvegarde" value="Sauvegarde">Sauvegarde</button>
-  <button name="modifie_C" value="Modifier">modifie</button>
+  <input type="text" name="titre_admin" value="<?php 
+echo $brouillon[0]['title']; ?>"/>  <br>
 
+<textarea name="texte_admin"  cols="70" rows="20">
+<?php 
+
+echo $brouillon[0]['body'];
+} else {
+  echo ' ';
+}
+?></textarea><br/><br>
+  <button name="new_chapitre" value="Nouveau chapitre">Nouveau chapitre</button>
+  <button name="sauvegarde" value="Sauvegarde">Sauvegarde</button>
+  <button name="modifie_C" value="Modifier">modifie</button>
 </form>
 
 <div class="bar_footer"></div> 
   </div>
-  <div class='brouillon_side isbordered'> <h2>Brouillon</h2></div>
+<?php include_once 'brouillon.admin.view.php' ?>
+</div>
 </body>
-
 </html>
