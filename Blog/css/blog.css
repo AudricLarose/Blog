@@ -20,6 +20,34 @@ margin: 0 auto;
 	height: 150px;
 
 }
+.bloc_header {
+ margin : 0 auto;
+}
+.bandereau{
+position: relative;
+margin-left : 40%;
+width: auto;
+height: auto;
+}
+.rect_noir{
+	position: absolute;
+	width: 35%;
+	height: 90px;
+	background-color: black; 
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+
+}
+
+.nom_artiste{
+	position: absolute;
+font-size: 30px;
+	color: white;
+	margin: 0 15px;
+
+}
 .bar_menu{
 	width:100%;
 	height: 50px;wid
@@ -96,7 +124,18 @@ height: auto;
 	    padding: 20px 0;
 }
 .isbordered{
-	border :  1px black solid;
+	border :  1px lightgrey solid;
+}
+
+.formulaire{
+	width: 100%;
+	height: auto;
+	background-color: #F2F2F2;
+	display: flex;
+	margin-top: 150px;
+	text-align: none;
+	padding: 15px 30px;
+
 }
 .bloc_lire-la-suite{
 	width : 20%;
@@ -121,10 +160,18 @@ height: auto;
 max-width : 1200px;
 display: inline-block;
 	width : 15%;
-height: 1000px;
+height: auto;
+margin-top: 60px;
 }
 
 .auteur{
 	color: #356fa6;
 	font-size: 18px;
+}
+.brouillon_side {
+	display: inline-block;
+	width : 15%;
+height: auto;
+margin-top: 60px;
+}
 }
