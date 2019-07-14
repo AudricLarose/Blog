@@ -22,8 +22,11 @@
 
 <body>
     <div class="bloc_header "></div>
-<div class="bar_menu ">
-
+<div class="bar_menu">
+  <a href="index.php" class ='liens' >index</a>
+  <a href="page.view.php" class ='liens'>chapitres</a>
+  <a href="ecriture.view.php" class ='liens'>créer un chapitre</a>
+  <a href="signal.view.php" class ='liens'>signalement</a>
 </div>
 <div class='big_box'>
  <?php include_once 'side_menu.view.php';?>

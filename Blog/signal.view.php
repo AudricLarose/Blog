@@ -35,53 +35,33 @@
   <a href="page.view.php" class ='liens'>chapitres</a>
   <a href="ecriture.view.php" class ='liens'>créer un chapitre</a>
   <a href="signal.view.php" class ='liens'>signalement</a>
-</div><div class='big_box'>
-
-   <?php include_once 'side_menu.view.php';?>
-<div class="container_text marge2">
-  <div class='texte_colonne'>
-   
-</div> 
-<?php 
-if (isset($_GET['id'])){
-$brouill= new affichage;
-$brouillon=$brouill->lecture('brouillon');
- ?>
-<form action="view.model.php " method="POST">
-<input type="text" name="titre_admin" value="<?php 
-echo $brouillon[0]['title']; ?>"/>  <br>
-
-<textarea name="texte_admin"  cols="70" rows="20">
-<?php 
-
-echo $brouillon[0]['body'];
-} else if (isset($_GET['id_chapitre'])) {
-  $chapitre= new affichage;
-$chapitres=$chapitre->lecture('posts4');
- ?>
-<form action="view.model.php " method="POST">
-<input type="text" name="titre_admin" value="<?php 
-echo $chapitres[0]['title']; ?>"/>  <br>
-<textarea name="texte_admin"  cols="150" rows="50">
-<?php 
-
-echo $chapitres[0]['body'];
-
-} else {
-  ?>
-  <form action="view.model.php " method="POST">
-<input type="text" name="titre_admin" value=" "/> <br>
-<textarea name="texte_admin"  cols="70" rows="20"> 
-<?php } ?>
-</textarea><br/><br>
-  <button name="new_chapitre" value="Nouveau chapitre">mettre en ligne</button>
-  <button name="sauvegarde" value="Sauvegarde">Sauvegarde</button>
-  <button name="reset" value="reset">reset</button>
-</form>
-
-<div class="bar_footer"></div> 
-  </div>
-<?php include_once 'brouillon.admin.view.php' ?>
 </div>
+<div class='big_box'><?php include_once 'side_menu.view.php';?>
+<div class="container_text marge2">
+<h1> Signalements</h1>
+<table>
+  <tr>
+    <th>id</th>
+    <th>message</th>
+    <th>nombre de signalement</th>
+    <th>options</th>
+</tr>
+<?php 
+$comment= new affichage();
+$table=$comment->spot ('commentaire');
+foreach ($table as $tables) {
+ ?>
+    <tr>
+      <td><?php echo $tables['id'] ;?></td>
+      <td><?php echo $tables['commentaire'] ;?></td>
+      <td><?php echo $tables['signalement'] ;?></td>
+      <td><?php echo '<form action="view.model.php " method="POST">';
+       echo '<input name="idk" type="hidden" value="'.$tables['id'].'"/>';
+      echo "<button name='supprimer_comment' value='supprimer commentaire'>supprimer</button></form>"; ?></td>
+    </tr>
+<?php } ?>
+</table>
+
+  <div class='texte_colonne'></div></div></div>
 </body>
 </html>

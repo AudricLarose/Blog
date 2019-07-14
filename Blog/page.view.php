@@ -28,7 +28,12 @@
     </div>
   </div>
      </div>
-<div class="bar_menu "></div>
+<div class="bar_menu">
+  <a href="index.php" class ='liens' >index</a>
+  <a href="page.view.php" class ='liens'>chapitres</a>
+  <a href="ecriture.view.php" class ='liens'>créer un chapitre</a>
+  <a href="signal.view.php" class ='liens'>signalement</a>
+</div>
 <div class='big_box'>
    <?php include_once 'side_menu.view.php';?>
 
@@ -52,14 +57,14 @@ if (isset($_GET['id'])){
 $ide=$_GET['id'];} else { header('location:index.php');}
 if ($commentaire){
 foreach ($commentaire as $commentaires) {
-  $nom=$commentaires['auteur'];
-  $auteur=$comment->forme($nom);
-  echo "<form action='view.model.php' method='POST'>";
- echo '<br> <div class="auteur"><strong>'.$auteur.'</strong></div>';
-  echo '<div class="date">'.$commentaires['date'].'</div>';
-  echo '<div class="conversa">'.$commentaires['commentaire'].'</div>';
-  if (isset($_SESSION['user'])){
-  if ($commentaires['mail']==$_SESSION['user']){
+$nom=$commentaires['auteur'];
+$auteur=$comment->forme($nom);
+echo "<form action='view.model.php' method='POST'>";
+echo '<br> <div class="auteur"><strong>'.$auteur.'</strong></div>';
+echo '<div class="date">'.$commentaires['date'].'</div>';
+echo '<div class="conversa">'.$commentaires['commentaire'].'</div>';
+if (isset($_SESSION['user'])){
+if ($commentaires['mail']==$_SESSION['user']){
     echo' <button type="submit" name="supprimer">supprimer</button>';
     echo' <button type="submit" name="maj">modifier</button>';
 

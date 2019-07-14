@@ -19,8 +19,11 @@ $extrait=implode(" ", $extr);
 return $extrait;
 	}
 	public function lecture($x){
-		if (isset($_GET['id'])){
-		$id=$_GET['id'];
+		if ((isset($_GET['id'])) || (isset($_GET['id_chapitre']))) {
+			if (isset($_GET['id_chapitre'])) { 
+				$id=$_GET['id_chapitre']; 
+			} else{
+		$id=$_GET['id'];}
 		$ide=intval($id);
 		$req='SELECT * FROM '.$x.' WHERE id='.$ide;
 		$resultat=$this->connected()->query($req);
@@ -30,8 +33,7 @@ return $extrait;
 			}
 		return $data;
 }
-	} else {	header('location:index.php');
-}}
+	}}
 public function show_comment (){
 		$id=$_GET['id'];
 		$ide=intval($id);
@@ -62,14 +64,12 @@ if($resultat->rowCount()){
 
  }
 
-	public function supprimer(){
+	public function supprimer($x){
 $id=$_POST['idk'];
 $ide=intval($id);
-		 	$idp=$_POST['idp'];
-
-$req="DELETE FROM commentaire WHERE id=".$ide;
+var_dump($ide);
+$req='DELETE FROM '.$x.' WHERE id='.$ide;
 $resultat=$this->connected()->query($req);
-	header('location:page.view.php?id='.$idp);
 
 }
 
@@ -95,13 +95,13 @@ return $datas;
 public function transforme (){
 	$body_modifier=$_POST['body'];
 	$id=$_POST['id'];
-			 	$idp=$_POST['idp'];
-
+	$idp=$_POST['idp'];
 	$ide=intval($id);
 	$req="UPDATE commentaire SET commentaire='$body_modifier' WHERE id=".$ide;
 	$resultat=$this-> connected()->query($req);
 	header('location:page.view.php?id='.$idp);
 }
+
  public function signale(){
 		$id=$_POST['idk'];
 		$ide=intval($id);
@@ -109,35 +109,41 @@ public function transforme (){
  		$req="UPDATE commentaire SET signalement=signalement+1 WHERE id=".$ide;
 		$resultat=$this->connected()->query($req);
  	header('location:page.view.php?id='.$idp);
-
  }
 
 public function antidoublons($x,$y){
 	$recherche= $this->spot($x);
-	var_dump($recherche);
-	var_dump($x);
-	var_dump($y);
 	foreach ($recherche as $recherches) {
-
 	if (in_array($y,$recherches)){
-		echo "yes !";
-		exit();
-	}}
+	return true;
+	exit();
+	}}}
 
-}
 public function ajouter_brouillon (){
  	$titre =$_POST['titre_admin'];
  	$nom =$_POST['texte_admin'];
-	$req="INSERT INTO brouillon (body, title) VALUES ('$nom','$titre')"; 
-	echo'ajouter brouillon';
+ 	$checkdoublons=$this->antidoublons('brouillon',$titre);
+ 	if($checkdoublons==true){
+ 	$req="UPDATE brouillon SET body='$nom' WHERE title='$titre'";
+ 	 	echo'maj brouillon';
+
+ } else{
+ 	echo'ajouter brouillon';
+	$req="INSERT INTO brouillon (body, title) VALUES ('$nom','$titre')"; }
 	$resultat=$this->connected()->query($req);
 
  }
  public function ajouter_chapitre (){
- 	$titre =$_POST['titre_admin'];
+  	$titre =$_POST['titre_admin'];
  	$nom =$_POST['texte_admin'];
-	$req="INSERT INTO posts4 (body, title) VALUES ('$nom','$titre')"; 
-	echo'chapitre ajouter';
+ 	$checkdoublons=$this->antidoublons('posts4',$titre);
+ 	if($checkdoublons==true){
+ 	$req="UPDATE posts4 SET body='$nom' WHERE title='$titre'";
+ 	echo'maj brouillon';
+
+ } else{
+ 	echo'ajouter brouillon';
+	$req="INSERT INTO posts4 (body, title) VALUES ('$nom','$titre')"; }
 	$resultat=$this->connected()->query($req);
 
  }
@@ -149,6 +155,7 @@ if (isset($_POST['commentaire'])){
 if (isset($_POST['supprimer'])){
 	$action =new affichage;
 	$action->supprimer();
+
 }  
 if (isset($_POST['maj'])){ 
 $paragraphe = new affichage;
@@ -171,10 +178,38 @@ if (isset($_POST['signaler'])){
 if (isset($_POST['new_chapitre'])){
 	$action =new affichage;
 	$action->ajouter_chapitre();
+	 	header('location:ecriture.view.php?id=0');
+
 } 
 if (isset($_POST['sauvegarde'])){
 	$action =new affichage;
 	 	$titre =$_POST['titre_admin'];
-	$action->antidoublons('brouillon',$titre);
+	$action->ajouter_brouillon();
+	 	header('location:ecriture.view.php?id=0');
+
 
 }   
+if (isset($_POST['supprimer_brouillon'])){
+	$paragraphe=new affichage;
+	$paragraphe->supprimer('brouillon');
+header('location:ecriture.view.php?id=0');
+
+}
+if (isset($_POST['supprimer_chapitre'])){
+	$paragraphe=new affichage;
+	$paragraphe->supprimer('posts4');
+header('location:ecriture.view.php?id=0');
+}
+if (isset($_POST['modifier_chapitre'])){
+  
+}
+
+if (isset($_POST['reset'])){
+ 	header('location:ecriture.view.php?id=0');
+}
+
+if (isset($_POST['supprimer_comment'])){
+		$paragraphe=new affichage;
+	$paragraphe->supprimer('commentaire');
+}
+
