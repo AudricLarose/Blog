@@ -3,7 +3,9 @@
 class affichage extends Connexion {
 	public function spot ($x){	
 		$req='SELECT * FROM '.$x.' ORDER BY id' ;
-		$resultat=$this->connected()->query($req);
+		$resultat=$this->connected()->prepare($req);
+				$resultat->execute();
+
 	if($resultat->rowCount()){
 		while ($x=$resultat->fetch()){
 				$data[]=$x;
@@ -25,8 +27,9 @@ return $extrait;
 			} else{
 		$id=$_GET['id'];}
 		$ide=intval($id);
-		$req='SELECT * FROM '.$x.' WHERE id='.$ide;
-		$resultat=$this->connected()->query($req);
+		$req='SELECT * FROM '.$x.' WHERE id= ?';
+		$resultat=$this->connected()->prepare($req);
+		$resultat->execute([$ide]);
 		if($resultat->rowCount()){
 		while ($x=$resultat->fetch()){
 				$data[]=$x;
@@ -38,8 +41,10 @@ public function show_comment (){
 		$id=$_GET['id'];
 		$ide=intval($id);
 		var_dump($ide);
-		$req='SELECT * FROM commentaire WHERE id_comment='.$ide;
-		$resultat=$this->connected()->query($req);
+		$req='SELECT * FROM commentaire WHERE id_comment=?';
+		$resultat=$this->connected()->prepare($req);
+$resultat->execute([$ide]);
+
 if($resultat->rowCount()){
 		while ($x=$resultat->fetch()){
 				$data[]=$x;
@@ -55,7 +60,8 @@ if($resultat->rowCount()){
  	 	$idp=$_POST['idp'];
 	$req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES ('$nom','$mail','$commentaire','0', '$id')"; 
 	echo'ok';
-	$resultat=$this->connected()->query($req);
+	$resultat=$this->connected()->prepare($req);
+			$resultat->execute();
 	session_start();
 	session_destroy();
 	session_start();
@@ -68,8 +74,10 @@ if($resultat->rowCount()){
 $id=$_POST['idk'];
 $ide=intval($id);
 var_dump($ide);
-$req='DELETE FROM '.$x.' WHERE id='.$ide;
-$resultat=$this->connected()->query($req);
+$req='DELETE FROM '.$x.' WHERE id=?';
+$resultat=$this->connected()->prepare($req);
+		$resultat->execute([$ide]);
+
 
 }
 
@@ -84,8 +92,9 @@ public function forme ($x){
 $id=$_POST['idk'];
 $ide=intval($id);
 var_dump($ide);
-$req="SELECT id , commentaire FROM commentaire WHERE id=".$ide;
-$resultat=$this-> connected()->query($req);
+$req="SELECT id , commentaire FROM commentaire WHERE id=?";
+$resultat=$this-> connected()->prepare($req);
+		$resultat->execute([$ide]);
 while ($row=$resultat->fetch()) {
 	$datas[]=$row;
 }
@@ -97,8 +106,9 @@ public function transforme (){
 	$id=$_POST['id'];
 	$idp=$_POST['idp'];
 	$ide=intval($id);
-	$req="UPDATE commentaire SET commentaire='$body_modifier' WHERE id=".$ide;
-	$resultat=$this-> connected()->query($req);
+	$req="UPDATE commentaire SET commentaire='$body_modifier' WHERE id=?";
+	$resultat=$this-> connected()->prepare($req);
+	$resultat->execute([$ide]);
 	header('location:page.view.php?id='.$idp);
 }
 
@@ -106,8 +116,9 @@ public function transforme (){
 		$id=$_POST['idk'];
 		$ide=intval($id);
 		 	$idp=$_POST['idp'];
- 		$req="UPDATE commentaire SET signalement=signalement+1 WHERE id=".$ide;
-		$resultat=$this->connected()->query($req);
+ 		$req="UPDATE commentaire SET signalement=signalement+1 WHERE id=?";
+		$resultat=$this->connected()->prepare($req);
+				$resultat->execute([$ide]);
  	header('location:page.view.php?id='.$idp);
  }
 
@@ -119,20 +130,23 @@ public function antidoublons($x,$y){
 	exit();
 	}}}
 
-public function ajouter_brouillon (){
- 	$titre =$_POST['titre_admin'];
+
+  public function ajouter ($x){
+  	$titre =$_POST['titre_admin'];
  	$nom =$_POST['texte_admin'];
- 	$checkdoublons=$this->antidoublons('brouillon',$titre);
+ 	$checkdoublons=$this->antidoublons($x,$titre);
  	if($checkdoublons==true){
- 	$req="UPDATE brouillon SET body='$nom' WHERE title='$titre'";
- 	 	echo'maj brouillon';
+ 	$req="UPDATE $x SET body=? WHERE title=?";
+ 	echo'maj brouillon';
 
  } else{
- 	echo'ajouter brouillon';
-	$req="INSERT INTO brouillon (body, title) VALUES ('$nom','$titre')"; }
-	$resultat=$this->connected()->query($req);
+ 	echo'ajouter dd';
+	$req="INSERT INTO posts4 (body, title) VALUES (?,?)"; }
+	$resultat=$this->connected()->prepare($req);
+	$resultat->execute([$nom,$titre]);
 
  }
+
  public function login(){
  	echo'ok login';
 	$username=$_POST['nom'];
@@ -146,8 +160,10 @@ $password=$_POST['password'];
 			}
 			 else {
 			 	$hashepwd=password_hash($password, PASSWORD_DEFAULT);
-			 	$req="INSERT INTO user (user, password) VALUES ('$username','$hashepwd')"; 
-				$resultat=$this->connected()->query($req);		
+			 	$req="INSERT INTO user (user, password) VALUES (?,?)"; 
+				$resultat=$this->connected()->prepare($req);
+						$resultat->execute([$username,$hashepwd]);
+		
 
 			 } 
 
@@ -163,7 +179,8 @@ if (empty($username) || (empty($password))){
 	exit();
 } else {
 	$req="SELECT* FROM user;";
-	$sql=$this->connected()->query($req);
+	$sql=$this->connected()->prepare($req);
+	$sql->execute();
 	while ($ssql=$sql->fetch()){
 		$passwordcheck=password_verify($password, $ssql['password']);
 if ($passwordcheck==true){
@@ -210,20 +227,8 @@ $entete .= "Date: ". date("D, j M Y H:i:s"); //date;
 mail('l.audric@gmail.com', $subject, $message,$entete);
 echo "message envoyé ";	
 }
- public function ajouter_chapitre (){
-  	$titre =$_POST['titre_admin'];
- 	$nom =$_POST['texte_admin'];
- 	$checkdoublons=$this->antidoublons('posts4',$titre);
- 	if($checkdoublons==true){
- 	$req="UPDATE posts4 SET body='$nom' WHERE title='$titre'";
- 	echo'maj brouillon';
 
- } else{
- 	echo'ajouter brouillon';
-	$req="INSERT INTO posts4 (body, title) VALUES ('$nom','$titre')"; }
-	$resultat=$this->connected()->query($req);
 
- }
 }
 if (isset($_POST['commentaire'])){
 	$action =new affichage;
@@ -254,14 +259,14 @@ if (isset($_POST['signaler'])){
 
 if (isset($_POST['new_chapitre'])){
 	$action =new affichage;
-	$action->ajouter_chapitre();
-	 	header('location:ecriture.view.php?id=0');
+	$action->ajouter ('posts4');
+	 	
 
 } 
 if (isset($_POST['sauvegarde'])){
 	$action =new affichage;
 	 	$titre =$_POST['titre_admin'];
-	$action->ajouter_brouillon();
+	$action->ajouter('brouillon');
 	 	header('location:ecriture.view.php?id=0');
 
 
