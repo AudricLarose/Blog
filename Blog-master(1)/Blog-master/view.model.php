@@ -68,16 +68,13 @@ if($resultat->rowCount()){
  	$nom =$_POST['nom'];
  	$mail =$_POST['email'];
  	$id=$_POST['idk'];
- 	 	$idp=$_POST['idp'];
+ 	// $idp=$_POST['idp'];
 	$req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES ('$nom','$mail','$commentaire','0', '$id')"; 
-	echo'ok';
 	$resultat=$this->connected()->prepare($req);
 			$resultat->execute();
-	session_start();
 	session_destroy();
-	session_start();
 	$_SESSION['user']=$mail;
-	header('location:page.controller.php?id='.$idp);
+	//header('location:page.controller.php?id='.$idp);
 
  }
 
@@ -119,7 +116,7 @@ public function transforme (){
 	$req="UPDATE commentaire SET commentaire='$body_modifier' WHERE id=?";
 	$resultat=$this-> connected()->prepare($req);
 	$resultat->execute([$ide]);
-	header('location:page.controller.php?id='.$idp);
+	//header('location:page.controller.php?id='.$idp);
 }
 
  public function signale(){
@@ -129,7 +126,7 @@ public function transforme (){
  		$req="UPDATE commentaire SET signalement=signalement+1 WHERE id=?";
 		$resultat=$this->connected()->prepare($req);
 				$resultat->execute([$ide]);
- 	header('location:page.controller.php?id='.$idp);
+ 	//header('location:page.controller.php?id='.$idp);
  }
 
 public function antidoublons($x,$y){
@@ -163,10 +160,10 @@ public function antidoublons($x,$y){
 	$username=$_POST['nom'];
 $password=$_POST['password'];
 			if (empty($username) || empty($password)){
-				header('location: index.php?error=empty_fields&='.$username);
+				//header('location: index.php?error=empty_fields&='.$username);
 				exit();
 			} else if (!preg_match("/^[a-zA-Z0-9]*$/",$username)){
-				header('locations: index.php?error=invalide_name');
+				//header('locations: index.php?error=invalide_name');
 				exit();
 			}
 			 else {
@@ -185,7 +182,7 @@ public function verifie(){
 	$username=$_POST['nom'];
 $password=$_POST['password'];
 if (empty($username) || (empty($password))){
-	header('locations: index.php?error=Champs_Vide');
+	//header('locations: index.php?error=Champs_Vide');
 	exit();
 } else {
 	$req="SELECT* FROM user;";
@@ -194,29 +191,24 @@ if (empty($username) || (empty($password))){
 	while ($ssql=$sql->fetch()){
 		$passwordcheck=password_verify($password, $ssql['password']);
 if ($passwordcheck==true){
-	session_start();
-	$_SESSION['admin']= true;
-	echo 'exact !' ;
-			header('location:index.php');
-	} 
-}
-header('locations: index.php?error=Mauvais_login');
+  $_SESSION['admin']= 'ok';
 
-}	
-}
+
+  } 	//header('locations: index.php?error=Mauvais_login');
+
+}}}	
+
 public function deco (){
-$_SESSION['admin'] = array();
-session_start();
 $_SESSION['admin']= array();
 session_destroy();
-		header('location:index.php');
+		//header('location:index.php');
 	}
 
 public function recherche() {
 	echo 'ok recherche';
 	if (isset($_POST['recherche'])){
 		$id=$_POST['recherche'];
-		header('location:page.controller.php?id='.$id);
+		//header('location:page.controller.php?id='.$id);
 }
 	}
 public function addition($y,$x){

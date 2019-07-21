@@ -18,7 +18,6 @@
 
 
 <body>
-  <?php session_start() ?>
   <div class="bloc_header ">
   <div class='bandereau'>
     <div class='rect_noir'>
