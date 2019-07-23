@@ -10,104 +10,122 @@ function session_go (){
 
 session_go ();
 function init(){
-$menus= new affichage;
-$nav=$menus->spot('posts4');
-$addition=$menus->addition('signalement','commentaire');
-$session=sessionactive();
- require 'entete.view.php'; 
- require 'bar_menu.view.php';
- require 'side_menu.view.php';
+	$affichaged= new affichage;
+	$affiche=$affichaged->spot('posts4');
+	$addition=$affichaged->addition('signalement','commentaire');
+	require "template.view.php";
+	$session=sessionactive();
+	// require 'entete.view.php'; 
+
+
 }
+		$affichaged= new affichage;
+	$affiche=$affichaged->spot('posts4');
+			$addition=$affichaged->addition('signalement','commentaire');
 
 
 function pages (){
-		 init ();
-$id=$_GET["id"];
-$menus= new affichage;
-$texto = $menus->lecture('posts4');
- require 'container_chapitre_text.view.php';
- require 'show_comment.view.php';
-require 'page.view.php';
+
+	$id=$_GET["id"];
+	$menus= new affichage;
+	$texto = $menus->lecture('posts4');
+	$comment=new affichage;
+	$commentaire= $comment->show_comment();
+	ob_start().
+	require 'pagecom.view.php';
+	$content=ob_get_clean();
+	body($content);
+
 }
 
 function admin (){
-	 init ();
-$session=sessionactive();
-if (!isset($session)){
-require 'administrateur.view.php';
+	$session=sessionactive();
+	if (!isset($session)){
+		ob_start();
+		require 'administrateur.view.php';
+		$content=ob_get_clean();
+	}
+	else {
+		$content= "no turning back ...";
+	}
+	body($content);
+
 }
-else {
-	echo "no turning back ...";
-}}
 
 function index (){
-	 init ();
 $affichaged= new affichage;
 $affiche=$affichaged->spot('posts4');
+ob_start();
 require 'accueil.view.php';
+$content=ob_get_clean();
+body($content);
+}
 
+function body ($content_body){
+	$affichaged= new affichage;
+	$affiche=$affichaged->spot('posts4');
+	$addition=$affichaged->addition('signalement','commentaire');
+	require "template.view.php";
 }
 
 function deconnecte(){
-	  $paragraphe=new affichage;
-  $paragraphe->deco();
-header('location:index.php');}
+	$paragraphe=new affichage;
+	$paragraphe->deco();
+	header('location:index.php');
+}
 
 function signal(){
-		 init ();
+	$session=sessionactive();
+	if ($session=='ok'){
+		$comment= new affichage();
+		$table=$comment->spot_comment ();
+		ob_start();
+		require 'signal.view.php';
+		$content=ob_get_clean();
+	} else {
+		$content='error 404 ';
+		body($content);
 
-		$session=sessionactive();
-if ($session=='ok'){
-$comment= new affichage();
-$table=$comment->spot_comment ();
-require 'signal.view.php';} else {
-	echo 'error 404 ';
-}
+	}
 }
 
-function footer (){
-	require 'footer.view.php'; 
-}
+// function footer (){
+// 	require 'footer.view.php'; 
+// }
 
 function ecriture ($a,$b){
-$session=sessionactive();
- init ();
-if ($session=='ok'){
-	
-
-	if ($a!==0){
+	$session=sessionactive();
+	if ($session=='ok'){
+		if ($a!==0){
 			var_dump($a);
-$brouill= new affichage;
-$x=$brouill->lecture($b);
-$xt=$x[0]["title"];
-$xb=$x[0]["body"];
-	echo 'pas vide';
+			$brouill= new affichage;
+			$x=$brouill->lecture($b);
+			$xt=$x[0]["title"];
+			$xb=$x[0]["body"];
+			echo 'pas vide';
+		} elseif ($a===0) {
+			var_dump($a);
+			$xt= ' ';
+			$xb= ' ';
+		}
+		ob_start();
+				$brouill= new affichage;
+		$brouillon=$brouill->spot('brouillon');
+		require 'ecriture.view.php'; 
+		$content=ob_get_clean();
+		body($content);
+		if (isset($brouillon)){
+			require 'brouillon.admin.view.php'; 
+		} else  {
+			echo 'pas de brouillon';
+		}
+	} else {
+		echo "404";
 
-} elseif ($a===0) {
-var_dump($a);
-	$xt= ' ';
-	$xb= ' ';
-}
-	require 'ecriture.view.php'; 
-	 $brouill= new affichage;
-$brouillon=$brouill->spot('brouillon');
-if (isset($brouillon)){
-require 'brouillon.admin.view.php'; 
-
-} else  {
-	echo 'pas de brouillon';
-}
-
-} else {
-	echo "404";
-
-}
-
-
-
+	}
 }
 
-// if (isset($_SESSION['admin'])){
+	// if (isset($_SESSION['admin'])){
 
-// }	 init ();
+	// }	 init ();
 

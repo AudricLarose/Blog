@@ -1,8 +1,8 @@
 <?php
  include_once 'connexion.model.php';
-class affichage extends Connexion {
+class affichage extends Connexion {    // decouper les classes
 	public function spot ($x){	
-		$req='SELECT * FROM '.$x.' ORDER BY id' ;
+		$req='SELECT * FROM '.$x.' ORDER BY id DESC' ;
 		$resultat=$this->connected()->prepare($req);
 				$resultat->execute();
 
@@ -69,7 +69,7 @@ if($resultat->rowCount()){
  	$mail =$_POST['email'];
  	$id=$_POST['idk'];
  	// $idp=$_POST['idp'];
-	$req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES ('$nom','$mail','$commentaire','0', '$id')"; 
+	$req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES ('$nom','$mail','$commentaire','0', '$id')"; // enlever les valeurs
 	$resultat=$this->connected()->prepare($req);
 			$resultat->execute();
 	session_destroy();
@@ -80,7 +80,7 @@ if($resultat->rowCount()){
 
 	public function supprimer($x){
 $id=$_POST['idk'];
-$ide=intval($id);
+$ide=intval($id);																		// enlever les variables qui ne servent a rien
 
 $req='DELETE FROM '.$x.' WHERE id=?';
 $resultat=$this->connected()->prepare($req);
@@ -200,7 +200,7 @@ if ($passwordcheck==true){
 
 public function deco (){
 $_SESSION['admin']= array();
-session_destroy();
+session_destroy();																		
 		//header('location:index.php');
 	}
 

@@ -1,20 +1,30 @@
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="index.php">index</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div class="bar_menu invisibleJS">
-  <a href="index.php" class ='liens' >index</a>
-  <ul>
-  <li class="menu"><a href="index.php?action=montrer_chapitre&id=1" class ='lien'>chapitres</a>
-  <ul class="sous_menu">
-  	<?php
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class=" nav-item active menu">
+        <a class="nav-link" href="index.php?action=montrer_chapitre&id=1">chapitre<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-foreach($nav as $navi){
-	 echo '<li><a href="index.php?action=montrer_chapitre&id='.$navi["id"].'">'.$navi["title"].'</a></li>';  
-	}
-	  ?>
 
-  </ul>
-  </li>
-</ul>
+
 <ul class="plusmenu">
 
   <?php 
