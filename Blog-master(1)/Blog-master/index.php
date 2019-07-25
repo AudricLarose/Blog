@@ -32,7 +32,7 @@ $ide=$_GET['id'];}
      break;
    
    case 'modification':
-    if (isset($_GET['id'])) { $id=$_GET['id'];  var_dump($id);ecriture($id,'brouillon');} else {echo "pas de variable";}
+    if (isset($_GET['id'])) { $id=$_GET['id'];ecriture($id,'brouillon');} else {echo "pas de variable";}
     if (isset($_GET['id_chapitre'])) { $id=$_GET['id_chapitre']; ecriture($id,'posts4');}
     break;
   

@@ -1,3 +1,4 @@
+	<?php ob_start();?>
 
  <?php  ?>
 
@@ -19,3 +20,4 @@ Nombre de mots : <div class="comptage"></div>
 
 </form></div>
 
+	<?php $content=ob_get_clean();?>

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scal=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   <?php
   include_once 'connexion.model.php';
   include_once 'view.model.php';?>
@@ -27,29 +35,56 @@
           </div>
         </div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="index.php">index</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-        <li class=" nav-item active menu">
-          <a class="nav-link" href="index.php?action=montrer_chapitre&id=1">chapitre<span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </div>
+<!-- <div class="invisibleJS"> -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-around"> 
+      <ul class="navbar-nav"><div class="row">
+ <div class="col-sm-4"><li class="nav-item"> <a href="index.php" class ='nav-link' >index</a></li></div>
+   <div class="col-sm-4"><li class="nav-item"><a href="index.php?action=montrer_chapitre&id=1" class ='nav-link'>chapitres</a></li></div>
+       <div class="col-sm-4"><li class="nav-item"><a href="index.php?action=montrer_admin&id=1" class ='nav-link'>Admin</a></li></div>
   </nav>
+  <!-- ul class="kk"> -->
+<!--     <?php
+$menus= new affichage;
+$nav=$menus->spot('posts4');
+foreach($nav as $navi){
+   echo '<li><a href="index.php?action=montrer_chapitre&id='.$navi["id"].'">'.$navi["title"].'</a></li>';  
+  }
+    ?> -->
 
+<!--   </ul>
+  </li>
+</ul>  -->
+
+  <?php  
+ $sum=new affichage;
+ $addition=$sum->addition('signalement','commentaire');
+if (isset($_SESSION['admin'])){
+  echo '<ul><li class="nav-item plus"><a href="#">plus</a><ul class="plus_lmenu">';
+echo'  <li><a href="ecriture.view.php?" class ="liens">créer un chapitre</a></li>';
+foreach ($addition as $additions) {
+echo'  <li><a href="signal.view.php" class ="liens">signalement ('.$additions["SUM(signalement)"].') </a><li>';}
+echo'  <li><a href="index.php?state=deco" class ="liens">se deconnecter</a></li></ul></li></ul>';
+
+
+    }else{?>
+<!--     </ul> -->
+
+
+    <?php }?>
+    </div>  
+
+ <form action='index.php' method="POST">
+  <p> Aller au chapitre :</p><input type="number" name="recherche" class='input_recherche' min="1" max="99" required="required" />
+  <button type="submit" name='chercher' > rechercher chapitre</button>
+</form>
+ 
   <div class='big_box'>
-    <div class="container_chapitre isbordered">
+    <div class="nav flex-column container_chapitre ">
       <?php
       foreach($affiche as $affiches){
-       echo '<a href="index.php?action=montrer_chapitre&id='.$affiches["id"].'"><h3>'.$affiches["title"].'</h3></a>';   
+       echo '<a href="index.php?action=montrer_chapitre&id='.$affiches["id"].'class="nav-link" ><h3>'.$affiches["title"].'</h3></a> ';   
        echo "<form action='index.php?action=montrer_ecriture' method='POST'>";
        echo '<input name="idk" type="hidden" value="'.$affiches['id'].'"/>';
-       var_dump($_SESSION);
        if (isset($_SESSION['admin'])){
          echo "<button name='supprimer_chapitre' value='supprimer'>Supprimer</button><br>";
          echo '<a href=index.php?action=modification&id_chapitre='.$affiches["id"].'" class="bouton">modifier</a></form>';
@@ -64,34 +99,9 @@
 
       <ul class="plusmenu">
 
-        <?php 
-        if (isset($session)){
-          echo "session existe";
-          if ($session=='ok'){
-            echo '<ul><li class="plus"><a href="#">plus</a><ul class="plus_menu">';
-            echo'  <li><a href="index.php?action=montrer_ecriture" class ="liens">créer un chapitre</a></li>';
-            foreach ($addition as $additions) {
-              echo'  <li><a href="index.php?action=montrer_signal" class ="liens">signalement ('.$additions["SUM(signalement)"].') </a><li>';
-            }
-              echo'  <li><a href="index.php?action=deco" class ="liens">se deconnecter</a></li></ul></li></ul>';
-
-
-            }}else{?>
-            </ul><a href="index.php?action=montrer_admin" class ='liens'>admin</a>
-
-          <?php }?>
-        </div>  
-
-        <form action='index.php?action=verifie' method="POST">
-          <p> Aller au chapitre :</p><input type="number" name="recherche" class='input_recherche' min="1" max="99" required="required" />
-          <button type="submit" name='chercher' > rechercher chapitre</button>
-        </form>
-
-
-
-        <H2> voici ma template !! </h2>
           <?= $content_body; ?>     
-        </div></div>
+        </div></div>        </div>  
+
         <script src="test.js"></script>
 
       </body>

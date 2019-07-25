@@ -1,4 +1,6 @@
 
+  <?php ob_start();?>
+
 <h1> Signalements</h1>
 <table>
   <tr>
@@ -31,3 +33,4 @@ foreach ($table as $tables) {
 </body>
 
 </html>
+  <?php $content=ob_get_clean();?>

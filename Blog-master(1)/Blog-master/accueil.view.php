@@ -1,3 +1,5 @@
+	<?php ob_start();?>
+
 <?php
 foreach($affiche as $affiches){
     $extrait=$affichaged->extrait($affiches["body"], 80 );
@@ -10,3 +12,4 @@ foreach($affiche as $affiches){
 }
     ?>
 
+	<?php $content=ob_get_clean();?>

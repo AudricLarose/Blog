@@ -31,9 +31,7 @@ function pages (){
 	$texto = $menus->lecture('posts4');
 	$comment=new affichage;
 	$commentaire= $comment->show_comment();
-	ob_start().
 	require 'pagecom.view.php';
-	$content=ob_get_clean();
 	body($content);
 
 }
@@ -41,9 +39,7 @@ function pages (){
 function admin (){
 	$session=sessionactive();
 	if (!isset($session)){
-		ob_start();
 		require 'administrateur.view.php';
-		$content=ob_get_clean();
 	}
 	else {
 		$content= "no turning back ...";
@@ -55,9 +51,7 @@ function admin (){
 function index (){
 $affichaged= new affichage;
 $affiche=$affichaged->spot('posts4');
-ob_start();
 require 'accueil.view.php';
-$content=ob_get_clean();
 body($content);
 }
 
@@ -79,9 +73,8 @@ function signal(){
 	if ($session=='ok'){
 		$comment= new affichage();
 		$table=$comment->spot_comment ();
-		ob_start();
+		
 		require 'signal.view.php';
-		$content=ob_get_clean();
 	} else {
 		$content='error 404 ';
 		body($content);
@@ -108,11 +101,9 @@ function ecriture ($a,$b){
 			$xt= ' ';
 			$xb= ' ';
 		}
-		ob_start();
 				$brouill= new affichage;
 		$brouillon=$brouill->spot('brouillon');
 		require 'ecriture.view.php'; 
-		$content=ob_get_clean();
 		body($content);
 		if (isset($brouillon)){
 			require 'brouillon.admin.view.php'; 

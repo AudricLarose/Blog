@@ -1,4 +1,4 @@
-
+	<?php ob_start();?>
 <div class='formulaire'>
 <form action='index.php?action=montrer_chapitre' method='POST'>
   <input name="idk" type="hidden" value=' <?php echo $id ?>'/>
@@ -54,3 +54,4 @@ echo' <button type="submit" name="signaler">signaler</button>';
 
 ?>
 
+	<?php $content=ob_get_clean();?>

@@ -7,12 +7,12 @@ include_once 'view.model.php';
   $action->commentaire();
 }  
 if (isset($_POST['supprimer'])){
-  $action =new affichage;
+  $action =new commande;
   $action->supprimer();
 
 }  
 if (isset($_POST['maj'])){ 
-$paragraphe = new affichage;
+$paragraphe = new commande;
 $magie=$paragraphe->modifier();
 $bodys=$magie[0]['commentaire'];
 $id=$magie[0]['id'];
@@ -21,36 +21,33 @@ echo "<form action='index.php?action=verifie' method='post'>
 </form>";
 }
 if (isset($_POST['modifier'])){
-  $paragraphe=new affichage;
+  $paragraphe=new commande;
   $paragraphe->transforme();
 }
 if (isset($_POST['signaler'])){
-  $paragraphe=new affichage;
+  $paragraphe=new commande;
   $paragraphe->signale();
 }
 
 if (isset($_POST['new_chapitre'])){
-  $action =new affichage;
+  $action =new commande;
   $action->ajouter ('posts4');    
 
 } 
 if (isset($_POST['sauvegarde'])){
-  $action =new affichage;
+  $action =new commande;
     $titre =$_POST['titre_admin'];
   $action->ajouter('brouillon');
 }   
 if (isset($_POST['supprimer_brouillon'])){
-  $paragraphe=new affichage;
+  $paragraphe=new commande;
   $paragraphe->supprimer('brouillon');
 header('location:ecriture.view.php?id=0');
 
 }
 if (isset($_POST['supprimer_chapitre'])){
-  $paragraphe=new affichage;
+  $paragraphe=new commande;
   $paragraphe->supprimer('posts4');
-}
-if (isset($_POST['modifier_chapitre'])){
-  
 }
 
 if (isset($_POST['reset'])){
@@ -58,7 +55,7 @@ if (isset($_POST['reset'])){
 }
 
 if (isset($_POST['supprimer_comment'])){
-    $paragraphe=new affichage;
+    $paragraphe=new commande;
   $paragraphe->supprimer('commentaire');
 }
 
