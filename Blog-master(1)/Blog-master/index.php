@@ -1,49 +1,81 @@
 <?php
-require 'controller.php';
-require 'formulaire.controller.php';
-require 'session.controller.php';
-
+require 'Controller/controller.php';
+require 'Controller/formulaire.controller.php';
+require 'Controller/session.controller.php';
+  $action =new initial;
+  $action->init();
 
 if (isset($_GET['action'])){       
   $action=$_GET['action'];
   if (isset($_GET['id'])){ $id=$_GET['id'];}
   switch ($action) {
+
     case 'montrer_chapitre':
-    
-      if (isset($_GET['id'])){
-$ide=$_GET['id'];}
-      pages ();
-      break;
+      if (isset($_GET['error'])){
+      $error=$_GET['error'];
+    } else {
+      $error = " ";
+    }
+    $action= new controller;
+    $action->pages($error);
+    break;
     
     case 'montrer_admin': 
-      admin ();
-      break;
-          
-    case 'montrer_signal':
-      signal ();
-      break;
-    
-                                        case 'deco':
-      deconnecte();
-      break;
-   
-    case 'montrer_ecriture':
-     ecriture(0,0);
-     break;
-   
-   case 'modification':
-    if (isset($_GET['id'])) { $id=$_GET['id'];ecriture($id,'brouillon');} else {echo "pas de variable";}
-    if (isset($_GET['id_chapitre'])) { $id=$_GET['id_chapitre']; ecriture($id,'posts4');}
+    if (isset($_GET['error'])){
+      $error=$_GET['error'];
+    } else {
+      $error = " ";
+    }
+    $action= new controller;
+    $action->admin ($error);
     break;
-  
-  case 'verifie':
+
+    case 'montrer_signal':
+
+    $action= new controller;
+    $action->signal ();
+    break;
+    
+    case 'deco':
+    $action= new controller;
+    $action->deconnecte();
+    break;
+
+    case 'montrer_ecriture':
+    if (isset($_GET['success'])) {
+      $success=$_GET['success'];
+    } else {
+      $success = " ";
+    }
+    var_dump($success);
+    $action= new controller;
+    $action->ecriture(0,0,$success);
+    break;
+
+    case 'modification':
+          $success = " ";
+    if (isset($_GET['id'])) { 
+
+      $id=$_GET['id'];
+      $action= new controller;
+      $action->ecriture($id,'brouillon',$success);
+    } 
+    if (isset($_GET['id_chapitre'])) { 
+      $id_chapitre=$_GET['id_chapitre'];  
+
+      $action= new controller;
+      $action->ecriture($id_chapitre,'posts4', $success);
+    }
+    break;
+
+    case 'verifie':
     require 'formulaire.controller.php';
     break;
-  
-}
+
+  }
 
 } else  {
 
-  index();
-  footer ();
+  $action= new controller;
+  $action->index();
 }
