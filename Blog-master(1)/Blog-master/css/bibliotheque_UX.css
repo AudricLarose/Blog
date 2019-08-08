@@ -95,10 +95,18 @@
     height: 42px;
 }
 
-
+.center {
+    text-align: center;
+}
 .isBordered{
     border:1px solid black;
 } 
+
+.justify-content-between{
+    justify-content: space-between;
+}
+.justify-content-around{
+    justify-content: space-around;}
 
 .isFade{
 -webkit-box-shadow:12px 10px 7px 0px #9a9a9a ;
@@ -184,6 +192,9 @@ box-shadow:12px 10px 7px 0px #9a9a9a ;
 }
 .width-auto {
     width: auto;
+}
+.full-width{
+    width: 100%;
 }
 .row {
     flex-flow: row;

@@ -2,7 +2,7 @@
     <br>
     <h2 class="center">Brouillon</h2>
 
-  <div class='brouillon_side d-flex row width-60 canScroll'>
+  <div class='brouillon_side d-flex row full-width canScroll'>
 
   <?php 
  foreach ($brouillon as $brouillons) {

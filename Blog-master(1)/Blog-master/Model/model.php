@@ -5,7 +5,6 @@ class affichage extends Connexion {
 		$req='SELECT * FROM '.$x.' ORDER BY id DESC' ;
 		$resultat=$this->connected()->prepare($req);
 		$resultat->execute();
-
 		if($resultat->rowCount()){
 			while ($x=$resultat->fetch()){
 				$data[]=$x;
@@ -206,7 +205,6 @@ public function transforme (){
 	$req="UPDATE commentaire SET commentaire='$body_modifier' WHERE id=?";
 	$resultat=$this-> connected()->prepare($req);
 	$resultat->execute([$ide]);
-	//header('location:page.controller.php?id='.$idp);
 }
 
 public function signale(){

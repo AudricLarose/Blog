@@ -8,18 +8,14 @@ class controller {
 public function session_go (){
 	session_start();
 }
-
-
-public function init(){
-	$bdd_data= new affichage;
-	$posts_datas=$bdd_data->spot('posts4');
-	$addition=$bdd_data->addition('signalement','commentaire');
-	require "View/template.view.php";
-	$session=sessionactive();
-	// require 'entete.view.php'; 
-
-
-}
+// public function init(){
+// 	$bdd_data= new affichage;
+// 	$posts_datas=$bdd_data->spot('posts4');
+// 	$additions=$bdd_data->addition('signalement','commentaire');
+// 	var_dump($additions);
+// 	require "View/template.view.php";
+// 	$session=sessionactive();
+// }
 
 public function pages ($error){
 try {
@@ -61,7 +57,7 @@ public function admin ($error){
 		else {
 switch ($error) {
 	case 'wrongpwd':
-	$content_admin= " le mot de passe/login est érroné";
+	$content_admin= " le mot de passe/login est erroné";
 
 		break;
 	case 'champs_vide':
@@ -92,9 +88,17 @@ require 'View/accueil.view.php';
 }
 
 public function body ($content_body){
+		$session=sessionactive();
+		if ($session=='ok'){
+$content_invite_admin='  Bonjour, Monsieur Forteroche.';
+} else {
+	$content_invite_admin='  Bonjour, invité.';
+
+}
+
 	$bdd_data= new affichage;
 	$posts_datas=$bdd_data->spot('posts4');
-	$addition=$bdd_data->addition('signalement','commentaire');
+	$additions=$bdd_data->addition('signalement','commentaire');
 	require "View/template.view.php";
 }
 

@@ -13,9 +13,10 @@
   <?php
   include_once 'model/connexion.model.php';?>
 <script src="https://cdn.tiny.cloud/1/xtv8s8afkquurwy3sizu945ysf5jhk46ydus6qkxs5ep51kl/tinymce/5/tinymce.min.js"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+
   <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
- <script>tinymce.init({ selector: #mytextarea });</script>
 
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/bibliotheque_UX.css">
@@ -25,11 +26,13 @@
 
 
 <body>
-<div class="bloc_principal">
-        <div class="bloc_header isRound d-flex justify-content-center align-item-center align-content-center">
+            <?= $content_invite_admin; ?>     
 
-              <div class='nom_artiste '><h1> BLOG DE L'ECRIVAIN</h1></div>
-        </div>
+<div class="bloc_principal">
+        <div class="bloc_header isRound d-flex justify-content-center align-item-center align-content-center hidden">
+
+              <div class='nom_artiste '><h1> Blog de Jean Forteroche</h1></div>
+                  <img src="images/image_SF.jpg"/></div>
 
 <div class="navig">
   <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-around"> 
@@ -42,27 +45,27 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
          <?php
 foreach($posts_datas as $posts_data){
+    $titre_extrait= $bdd_data->extrait($posts_data["title"], 4 );
   ?>
 
-   <a class="dropdown-item" href="index.php?action=montrer_chapitre&id=<?php echo $posts_data["id"] ?>"><?php echo $posts_data["title"] ?></a> 
+   <a class="dropdown-item" href="index.php?action=montrer_chapitre&id=<?php echo $posts_data["id"] ?>"><?php echo $titre_extrait.'[...]' ?></a> 
    <?php } ?>        
         </div>
       </li>
       
   <?php
- $sum=new affichage;
- $additions=$sum->addition('signalement','commentaire');
+
 if (isset($_SESSION['admin'])){
            ?>
 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">plus</a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-<a href="index.php?action=montrer_ecriture" class="dropdown-item">créer un chapitre</a>
+<a href="index.php?action=montrer_ecriture" class="dropdown-item">Creation</a>
   <?php
 foreach ($additions as $addition) {
 ?>
-<a href="index.php?action=montrer_signal" class="dropdown-item">signalement (<?php echo $addition["SUM(signalement)"]?>) </a>
+<a href="index.php?action=montrer_signal" class="dropdown-item">signal(<?php echo $addition["SUM(signalement)"]?>) </a>
 <?php } ?>
-  <a href="index.php?action=deco" class="dropdown-item">se deconnecter</a></li>
+  <a href="index.php?action=deco" class="dropdown-item">deconnexion</a></li>
   <?php }else{ ?>
        <div class="col-sm-4"><li class="nav-item"><a href="index.php?action=montrer_admin" class ='nav-link'>Admin</a></li></div>
     <?php }?>

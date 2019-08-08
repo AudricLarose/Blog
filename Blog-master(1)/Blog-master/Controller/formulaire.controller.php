@@ -12,16 +12,6 @@ if (isset($_POST['supprimer'])){
   $action =new commande;
   $action->supprimer();}
 
-// }  
-// if (isset($_POST['maj'])){ 
-// $paragraphe = new commande;
-// $magie=$paragraphe->modifier();
-// $bodys=$magie[0]['commentaire'];
-// $id=$magie[0]['id'];
-// echo "<form action='index.php?action=verifie' method='post'>
-// <select name='id' id=''><br /><option name='id' value='$id' >$id</option></select><textarea name='body' cols='30' rows='10'>$bodys</textarea><br /> <button type='submit' name='modifier'>affichageer</button>
-// </form>";
-// } 
 if (isset($_POST['modifier'])){
   $paragraphe=new commande;
   $paragraphe->transforme();

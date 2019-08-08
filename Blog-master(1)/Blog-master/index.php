@@ -2,6 +2,7 @@
 require 'Controller/controller.php';
 require 'Controller/formulaire.controller.php';
 require 'Controller/session.controller.php';
+
   $action =new initial;
   $action->init();
 
@@ -47,7 +48,6 @@ if (isset($_GET['action'])){
     } else {
       $success = " ";
     }
-    var_dump($success);
     $action= new controller;
     $action->ecriture(0,0,$success);
     break;
