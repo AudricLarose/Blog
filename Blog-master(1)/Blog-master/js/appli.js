@@ -26,9 +26,7 @@ $(x).css('opacity','0.4');
 $(window).scroll(function(){
 	 apps.scroll(534);
 	 apps.detect('.bloc-gauche');
-	apps.detect('.container_text');
 		apps.detect('.bloc_extrait_index');
-				apps.detect('.big_blox');
 
 
 

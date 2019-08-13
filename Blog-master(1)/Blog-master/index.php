@@ -3,8 +3,8 @@ require 'Controller/controller.php';
 require 'Controller/formulaire.controller.php';
 require 'Controller/session.controller.php';
 
-  $action =new initial;
-  $action->init();
+$action =new initial;
+$action->init();
 
 if (isset($_GET['action'])){       
   $action=$_GET['action'];
@@ -12,7 +12,7 @@ if (isset($_GET['action'])){
   switch ($action) {
 
     case 'montrer_chapitre':
-      if (isset($_GET['error'])){
+    if (isset($_GET['error'])){
       $error=$_GET['error'];
     } else {
       $error = " ";
