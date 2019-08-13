@@ -84,14 +84,13 @@ public function addition($y,$x){
 		$mail =$_POST['email'];
 		$id=$_POST['idk'];
 		$id=intval($id);
-
-if (empty($mail) || empty($nom) || empty ($commentairer)){
+if (empty($mail) || empty($nom) || empty ($commentaire)){
 header('location:index.php?action=montrer_chapitre&id='.$id.'&error=champs_vide');
 } else{
 		$req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES (?,?,?,?,?)"; 
 		$resultat=$this->connected()->prepare($req);
 		$resultat->execute([$nom,$mail,$commentaire,0,$id]);
-	//header('location:page.controller.php?id='.$idp);
+header('location:index.php?action=montrer_chapitre&id='.$id);
 }
 	}
 
@@ -233,6 +232,10 @@ public function antidoublons($x,$y){
 public function ajouter ($x){
 	$titre =$_POST['titre_admin'];
 	$nom =$_POST['texte_admin'];
+	if (empty($titre) || empty($nom)){
+		header('location:index.php?action=montrer_ecriture');
+	} else {
+
 	$checkdoublons=$this->antidoublons($x,$titre);
 	if($checkdoublons==true){
 		$req="UPDATE $x SET body=? WHERE title=?";
@@ -246,7 +249,7 @@ header('location:index.php?action=montrer_ecriture&success=ajout');
 	}
 		$resultat=$this->connected()->prepare($req);
 		$resultat->execute([$nom,$titre]);
-	}
+	}}
 
 
 

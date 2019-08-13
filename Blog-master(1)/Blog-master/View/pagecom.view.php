@@ -45,7 +45,7 @@
        <br>              <input name="idk" type="hidden" value=' <?php echo $id ?>'/>
        <input type="text" name="nom" placeholder="Nom" required="required"></input><br><br>
        <input type="text" name="email" placeholder="email" required="required"></imput><br><br>
-       <textarea name="commentairer"  cols="40" rows="5" class='comment' placeholder="Tapez votre commentaire" required="required"></textarea><br /><br>
+       <textarea name="commentairer"  cols="40" rows="5" class='comment' placeholder="Tapez votre commentaire" ></textarea><br /><br>
        <button type="submit" name="commentaire">commenter</button><br>
      </div>
 

@@ -28,8 +28,12 @@ if (isset($_POST['new_chapitre'])){
 } 
 if (isset($_POST['sauvegarde'])){
   $action =new commande;
+if (isset($_POST['id'])){
+var_dump($_POST['id']);
+}
     $titre =$_POST['titre_admin'];
   $action->ajouter('brouillon');
+
 
 }   
 if (isset($_POST['supprimer_brouillon'])){

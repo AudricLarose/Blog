@@ -28,18 +28,18 @@
 <body>
             <?= $content_invite_admin; ?>     
 
-<div class="bloc_principal">
+<div class="bloc_principal" id="mydiv">
         <div class="bloc_header isRound d-flex justify-content-center align-item-center align-content-center hidden">
+          <div class="parallax"></div>
+              <div class='nom_artiste'><h1> Blog de Jean Forteroche</h1></div>
 
-              <div class='nom_artiste '><h1> Blog de Jean Forteroche</h1></div>
-                  <img src="images/image_SF.jpg"/></div>
-
-<div class="navig">
+</div>
+<div class="navig isRound isFade">
   <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-around"> 
       <ul class="navbar-nav"><div class="row">
- <div class="col-sm-4"><li class="nav-item"> <a href="index.php" class ='nav-link' >index</a></li></div>
+ <div class="col-sm-4"><li class="nav-item"> <a href="index.php" class ='nav-link isWhite' >index</a></li></div>
    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle isWhite" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Chapitre
           </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -71,12 +71,12 @@ foreach ($additions as $addition) {
     <?php }?>
     </div>  
   </nav>
-
-<div class='big_box bloc6'>
-  <div class=" bloc-gauche">
-    <div class="nav flex-column  isRound  container_chapitre isFade">
-      <div class="band isLightBlue  isRound d-flex justify-content-center align-content-center align-item-center"><h2>Chapitre</h2></div>
-      <div class="canScroll d-flex justify-content-center align-content-center align-item-center column">
+</div>
+<div class='big_box bloc6 isBCWhite '>
+  <div class=" bloc-gauche isBCWhite">    
+    <div class="nav flex-column  isRound  container_chapitre">
+      <div class="band isLightBlue  isRound d-flex justify-content-center align-content-center align-item-center"><h2>Chapitre</h2><div class="hide_windows bordered"></div></div>
+      <div class=" d-flex justify-content-center align-content-center align-item-center column">
       <?php
       foreach($posts_datas as $posts_data){
         ?>
@@ -95,6 +95,8 @@ foreach ($additions as $addition) {
     </div>
     </div>
     </div>
+
+
     <div class="container_text marge2">
 
       <ul class="plusmenu">
@@ -103,5 +105,6 @@ foreach ($additions as $addition) {
         </div></div></div> 
 
       </body>
+<script src="js/appli.js"></script>
 
       </html>

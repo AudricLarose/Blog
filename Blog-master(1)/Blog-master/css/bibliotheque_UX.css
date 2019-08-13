@@ -72,6 +72,9 @@
 .isWhite {
     color: white;
 }
+.isBCWhite {
+    background-color: white;
+}
 
 .isBlue {
     color: blue;
@@ -86,7 +89,10 @@
 }
 
 .isLightBlue {
-    background-color: #F1F5FF;
+    background: -webkit-linear-gradient(90deg, rgb(3, 96, 130) 0%, rgb(33, 131, 167) 50%, rgb(0, 122, 167) 80%);
+    background: -o-linear-gradient(90deg, rgb(3, 96, 130) 0%, rgb(33, 131, 167) 50%, rgb(0, 122, 167) 80%);
+    background: -moz-linear-gradient(90deg, rgb(3, 96, 130) 0%, rgb(33, 131, 167) 50%, rgb(0, 122, 167) 80%);
+    color: white;
 }
 
 .mini_band {

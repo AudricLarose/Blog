@@ -53,16 +53,14 @@ if (isset($_GET['action'])){
     break;
 
     case 'modification':
-          $success = " ";
+    $success = " ";
     if (isset($_GET['id'])) { 
-
       $id=$_GET['id'];
       $action= new controller;
       $action->ecriture($id,'brouillon',$success);
     } 
     if (isset($_GET['id_chapitre'])) { 
       $id_chapitre=$_GET['id_chapitre'];  
-
       $action= new controller;
       $action->ecriture($id_chapitre,'posts4', $success);
     }

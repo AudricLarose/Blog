@@ -93,9 +93,7 @@ public function body ($content_body){
 $content_invite_admin='  Bonjour, Monsieur Forteroche.';
 } else {
 	$content_invite_admin='  Bonjour, invité.';
-
 }
-
 	$bdd_data= new affichage;
 	$posts_datas=$bdd_data->spot('posts4');
 	$additions=$bdd_data->addition('signalement','commentaire');
@@ -112,8 +110,12 @@ public function signal(){
 	$session=sessionactive();
 	if ($session=='ok'){
 		$comment= new affichage();
-		$table=$comment->spot_comment ();		
+			$table=$comment->spot_comment ();	
+		if (!empty($table)){		
 		require 'View/signal.view.php';
+} else {
+	$content="Vous n'avez pas encore de commentaires !";
+}
 	} else {
 		$content='error 404 ';
 	}
