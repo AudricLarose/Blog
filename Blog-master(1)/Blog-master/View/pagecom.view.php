@@ -1,4 +1,8 @@
 	<?php ob_start();?>
+  <br><br>
+  <div class="isGreen"><?= $content_success; ?></div>
+    <br><br>
+
   <h2 class='titre'>
     <?php  foreach($bloc_text_titres as $bloc_text_titre){
      echo $bloc_text_titre["title"];
@@ -27,6 +31,7 @@
             <br> <div class="auteur"><strong><?php echo  $auteur ?></strong></div>
             <div class="date"><?php echo $commentaire['date'] ?></div>
             <div class="conversa"><?php echo $commentaire['commentaire'] ?></div>
+            <input name="idke" type="hidden" value=' <?php echo $id ?>'/>
             <button type="submit" name="signaler">signaler</button>
             <input name="idk" type="hidden" value="<?php echo $commentaire['id'] ?>"/>
           </form>

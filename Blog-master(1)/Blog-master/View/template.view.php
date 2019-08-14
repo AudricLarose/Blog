@@ -21,12 +21,12 @@
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/bibliotheque_UX.css">
 
+<title><?= $content_onglet_titre; ?></title>
 
 </head>
 
 
 <body>
-  <?= $content_invite_admin; ?>     
 
   <div class="bloc_principal" id="mydiv">
     <div class="bloc_header isRound d-flex justify-content-center align-item-center align-content-center hidden">
@@ -100,8 +100,8 @@
   <div class="container_text marge2">
 
     <ul class="plusmenu">
-
-      <?= $content_body; ?>     
+        <?= $content_invite_admin; ?>     
+        <?= $content_body; ?>     
     </div></div></div> 
 
   </body>

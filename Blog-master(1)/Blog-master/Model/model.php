@@ -80,6 +80,7 @@ class affichage extends Connexion {
 	}
 	public function commentaire (){
 		$commentaire =$_POST['commentairer'];
+		$commentaire=htmlspecialchars($commentaire);
 		$nom =$_POST['nom'];
 		$mail =$_POST['email'];
 		$id=$_POST['idk'];
@@ -90,7 +91,7 @@ class affichage extends Connexion {
 			$req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES (?,?,?,?,?)"; 
 			$resultat=$this->connected()->prepare($req);
 			$resultat->execute([$nom,$mail,$commentaire,0,$id]);
-			header('location:index.php?action=montrer_chapitre&id='.$id);
+			header('location:index.php?action=montrer_chapitre&id='.$id.'&success=valide');
 		}
 	}
 
@@ -208,10 +209,13 @@ class commande extends Connexion {
 
 	public function signale(){
 		$id=$_POST['idk'];
+		$id_page=$_POST['idke'];
 		$ide=intval($id);
 		$req="UPDATE commentaire SET signalement=signalement+1 WHERE id=?";
 		$resultat=$this->connected()->prepare($req);
 		$resultat->execute([$ide]);
+		header('location:index.php?action=montrer_chapitre&id='.$id_page.'&success=signaler');
+
 
 	}
 

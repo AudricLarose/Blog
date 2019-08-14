@@ -12,15 +12,20 @@ if (isset($_GET['action'])){
   switch ($action) {
 
     case 'montrer_chapitre':
+
     if (isset($_GET['error'])){
       $error=$_GET['error'];
     } else {
       $error = " ";
     }
+    if (isset($_GET['success'])) {
+      $success=$_GET['success'];
+    } else {
+      $success = " ";
+    }
     $action= new controller;
-    $action->pages($error);
+    $action->pages($error,$success);
     break;
-    
     case 'montrer_admin': 
     if (isset($_GET['error'])){
       $error=$_GET['error'];
@@ -30,9 +35,7 @@ if (isset($_GET['action'])){
     $action= new controller;
     $action->admin ($error);
     break;
-
     case 'montrer_signal':
-
     $action= new controller;
     $action->signal ();
     break;
@@ -70,7 +73,16 @@ if (isset($_GET['action'])){
     require 'formulaire.controller.php';
     break;
 
+ default:
+require 'View/erreur_404.php';
+      $action= new controller;
+        $action->body($content);
+
+      break;
+
+
   }
+
 
 } else  {
 

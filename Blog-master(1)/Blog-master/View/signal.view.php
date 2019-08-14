@@ -26,9 +26,4 @@ foreach ($table as $tables) {
 </div>
 
   </div>
-
-
-</body>
-
-</html>
   <?php $content=ob_get_clean();?>

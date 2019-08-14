@@ -72,6 +72,10 @@
 .isWhite {
     color: white;
 }
+.isGreen {
+    color: green;
+}
+
 .isBCWhite {
     background-color: white;
 }
