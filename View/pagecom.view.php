@@ -24,7 +24,7 @@
       if ($commentaires){
         foreach ($commentaires as $commentaire) {
           $nom=$commentaire['auteur'];
-          $auteur=$comment->forme($nom);
+          $auteur=$forme->forme($nom);
           ?>
 
           <form action='index.php' method='POST'>

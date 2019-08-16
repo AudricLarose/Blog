@@ -1,10 +1,19 @@
 <?php
 require 'Controller/controller.php';
 require 'Controller/formulaire.controller.php';
+require 'Controller/index.controller.php';
+require 'Controller/body.controller.php';
+require 'Controller/admin.controller.php';
 require 'Controller/session.controller.php';
+require 'Controller/page.controller.php';
+require 'Controller/ecriture.controller.php';
+require 'Controller/signal.controller.php';
+require 'Controller/deconnecte.controller.php';
 
 $action =new initial;
 $action->init();
+$action= new controller;
+$action->session_go ();
 
 if (isset($_GET['action'])){       
   $action=$_GET['action'];
@@ -23,7 +32,7 @@ if (isset($_GET['action'])){
     } else {
       $success = " ";
     }
-    $action= new controller;
+    $action= new Pages_class;
     $action->pages($error,$success);
     break;
     case 'montrer_admin': 
@@ -32,16 +41,16 @@ if (isset($_GET['action'])){
     } else {
       $error = " ";
     }
-    $action= new controller;
+    $action= new Admin_class;
     $action->admin ($error);
     break;
     case 'montrer_signal':
-    $action= new controller;
+    $action= new Signal_class;
     $action->signal ();
     break;
     
     case 'deco':
-    $action= new controller;
+    $action= new Deco_class;
     $action->deconnecte();
     break;
 
@@ -51,7 +60,7 @@ if (isset($_GET['action'])){
     } else {
       $success = " ";
     }
-    $action= new controller;
+    $action= new Ecriture_class;
     $action->ecriture(0,0,$success);
     break;
 
@@ -59,12 +68,12 @@ if (isset($_GET['action'])){
     $success = " ";
     if (isset($_GET['id'])) { 
       $id=$_GET['id'];
-      $action= new controller;
+      $action= new Ecriture_class;
       $action->ecriture($id,'brouillon',$success);
     } 
     if (isset($_GET['id_chapitre'])) { 
       $id_chapitre=$_GET['id_chapitre'];  
-      $action= new controller;
+      $action= new Ecriture_class;
       $action->ecriture($id_chapitre,'posts4', $success);
     }
     break;
@@ -75,7 +84,7 @@ if (isset($_GET['action'])){
 
  default:
 require 'View/erreur_404.php';
-      $action= new controller;
+      $action= new Body_class;
         $action->body($content);
 
       break;
@@ -86,6 +95,6 @@ require 'View/erreur_404.php';
 
 } else  {
 
-  $action= new controller;
+  $action= new Index_class;
   $action->index();
 }

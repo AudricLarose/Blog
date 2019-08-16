@@ -36,13 +36,6 @@ class affichage extends Connexion {
 	}
 
 
-	public function extrait($x,$y){
-
-		$extr = explode(' ', "$x",$y);
-		$extr[$y-1]=" ";
-		$extrait=implode(" ", $extr);
-		return $extrait;
-	}
 
 	public function lecture($x){
 		if ((isset($_GET['id'])) || (isset($_GET['id_chapitre']))) {
@@ -96,13 +89,6 @@ class affichage extends Connexion {
 	}
 
 
-	public function forme ($x){
-		$texte1=strtolower($x);
-		$texte_mod=ucwords($texte1);
-		return $texte_mod;
-
-
-	}
 	public function login(){
 		echo'ok login';
 		$username=$_POST['nom'];
@@ -148,31 +134,6 @@ class affichage extends Connexion {
 		}
 	}
 
-
-	public function deco (){
-		$_SESSION['admin']= array();
-		session_destroy();																		
-		//header('location:index.php');
-	}
-
-	public function recherche() {
-		echo 'ok recherche';
-		if (isset($_POST['recherche'])){
-			$id=$_POST['recherche'];
-			header('location:index.php?action=montrer_chapitre&id='.$id);
-		}
-// public function compte(){
-// 	$corps=$_POST['texte_admin'];
-// 	$tab=explode( " ", $corps);
-// 	$resultat=count($tab);
-// 	echo $resultat;
-// 	return $resultat;
-// }}
-
-
-
-
-	}	
 }
 class commande extends Connexion {    
 
@@ -219,18 +180,6 @@ class commande extends Connexion {
 
 	}
 
-	public function antidoublons($x,$y){
-		$data= new affichage;
-		$recherche= $data->spot($x);
-		if (isset($recherche)) {
-			foreach ($recherche as $recherches) {
-				if (in_array($y,$recherches)){
-					return true;
-					exit();
-				}
-			}
-		}
-	}
 
 
 	public function ajouter ($x){
@@ -239,8 +188,8 @@ class commande extends Connexion {
 		if (empty($titre) || empty($nom)){
 			header('location:index.php?action=montrer_ecriture');
 		} else {
-
-			$checkdoublons=$this->antidoublons($x,$titre);
+$check= new init;
+			$checkdoublons=$check->antidoublons($x,$titre);
 			if($checkdoublons==true){
 				$req="UPDATE $x SET body=? WHERE title=?";
 				header('location:index.php?action=montrer_ecriture&success=maj');

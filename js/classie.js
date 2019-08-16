@@ -1,4 +1,4 @@
-/*!
+s/*!
  * classie - class helper functions
  * from bonzo https://github.com/ded/bonzo
  * 

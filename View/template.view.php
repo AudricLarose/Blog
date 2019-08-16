@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <title><?= $content_onglet_titre; ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scal=1">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -8,11 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-  <?php
-  include_once 'model/connexion.model.php';?>
-  <script src="https://cdn.tiny.cloud/1/xtv8s8afkquurwy3sizu945ysf5jhk46ydus6qkxs5ep51kl/tinymce/5/tinymce.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/yo2z0d85ohtegggjy86g06z9qs6qmtnt76x64zjhe680i3q5/tinymce/5/tinymce.min.js"></script>
   <script>tinymce.init({selector:'textarea'});</script>
 
   <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
@@ -20,9 +17,6 @@
 
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/bibliotheque_UX.css">
-
-<title><?= $content_onglet_titre; ?></title>
-
 </head>
 
 
@@ -45,7 +39,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <?php
            foreach($posts_datas as $posts_data){
-            $titre_extrait= $bdd_data->extrait($posts_data["title"], 4 );
+            $xtrait= new Index_class;
+            $titre_extrait= $xtrait->extrait($posts_data["title"], 4 );
             ?>
 
             <a class="dropdown-item" href="index.php?action=montrer_chapitre&id=<?php echo $posts_data["id"] ?>"><?php echo $titre_extrait.'[...]' ?></a> 

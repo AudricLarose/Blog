@@ -2,7 +2,8 @@
 
 <?php
 foreach($posts_datas as $posts_data){
-    $extrait= $bdd_data->extrait($posts_data["body"], 80 );
+    $xtrait= new Index_class;
+    $extrait= $xtrait->extrait($posts_data["body"], 80 );
     ?>
     <div class="bloc_extrait_index isRound ">
     <div class="bloc_titre isRound isLightBlue  d-flex justify-content-center align-item-center "><h2><?php echo $posts_data["title"] ?></h2></div>
