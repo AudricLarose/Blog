@@ -1,7 +1,6 @@
  <?php
   Class Antidoublon_controller {
-
-  public function antidoublons($x,$y){
+    public function antidoublons($x,$y){
     $data= new affichage;
     $recherche= $data->spot($x);
     if (isset($recherche)) {

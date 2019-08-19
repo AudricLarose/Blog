@@ -1,8 +1,7 @@
 <?php
 class Signal_controller { 
 	public function signal(){
-					$content_onglet_titre="Signal";
-
+		$content_onglet_titre="Signal";
 		$session=sessionactive();
 		if ($session=='ok'){
 			$comment= new affichage();
@@ -13,7 +12,7 @@ class Signal_controller {
 				$content="Vous n'avez pas encore de commentaires !";
 			}
 		} else {
-require 'View/erreur_404.php';
+			require 'View/erreur_404.php';
 		}	$body= new Body_class;
 		$body->body($content,$content_onglet_titre);
 	}

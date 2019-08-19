@@ -15,7 +15,6 @@ class Ecriture_controller {
 				$content_feedback= " ";
 				break;
 			}
-
 			if ($a!==0){
 				$brouill= new affichage;
 				$x=$brouill->lecture($b);
@@ -27,20 +26,16 @@ class Ecriture_controller {
 			}
 			$brouill= new affichage;
 			$brouillon=$brouill->spot('brouillon');
-
 			if (isset($brouillon)){
 				require 'View/brouillon.admin.view.php';
-
 			} else  {
 				$content_brouillon='pas de brouillon';
 			}
 			require 'View/ecriture.view.php'; 
 		} else {
-require 'View/erreur_404.php';
-
+			require 'View/erreur_404.php';
 		}
-$body= new Body_controller;			
-$body->body($content,$content_onglet_titre);
-
+		$body= new Body_controller;			
+		$body->body($content,$content_onglet_titre);
 	}
 }
