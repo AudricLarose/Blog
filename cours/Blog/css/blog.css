@@ -1,0 +1,232 @@
+body {
+	background-color : #fffbf1;
+}
+h3, h2, p , a{
+	font-family: "century", times;
+}
+h3{
+	margin: 25px 50px;
+}
+a{
+	text-decoration: none;
+	color: black;
+
+}
+textarea{
+margin: 0 auto;
+}
+.bloc_header{
+	width: 100%;
+	height: 150px;
+
+}
+.bloc_header {
+ margin : 0 auto;
+}
+.bandereau{
+position: relative;
+margin-left : 40%;
+width: auto;
+height: auto;
+}
+.rect_noir{
+	position: absolute;
+	width: 35%;
+	height: 90px;
+	background-color: black; 
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+
+}
+
+.nom_artiste{
+	position: absolute;
+font-size: 30px;
+	color: white;
+	margin: 0 15px;
+
+}
+.bar_menu{
+	width:100%;
+	height: 50px;wid
+	position : relative;
+	background-color : white;
+	    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+}
+.texte_colonne{
+	margin-bottom: 100px;
+}
+.conversa{
+	background-color:#F2F2F2;
+ width: 100%;
+ height: auto;
+  padding: 0 20px;
+}
+.big_box{
+	display: flex;
+	flex-flow: row wrap;
+}
+.marge1{
+	width:70%;
+}
+.marge2{
+	margin: 50px auto;
+	width: 50%;
+}
+.container_text{
+text-align: justify;
+	display: inline-block;
+max-width : 1200px;
+height: auto;
+}
+
+.bloc_extrait_index{
+	width : 75%;
+	height: 450px;
+	margin : 0 auto ;
+	display : flex ;
+	flex-flow: column ;
+	background-color : #fcf9f3;
+
+
+}
+h3{
+display: inline-block;  }
+
+.bloc_titre {
+	width: 100%;
+	height : 50px;
+	text-align: center;
+
+}
+
+.sous_bloc_date-text{
+	width : 100%;
+	height: 400px;
+	display: flex;
+	flex-flow : column;
+
+}
+.bloc_date{
+	width: 100%;
+	height: 50PX;
+
+}
+
+.bloc_text{
+	width : 100%;
+    height: 350px;
+	display : flex;
+	justify-content: flex-start;
+	    align-items: flex-start;
+	    overflow: hidden;
+	    text-align: justify;
+	    padding: 20px 0;
+}
+.isbordered{
+	border :  1px lightgrey solid;
+}
+.carre{
+	width: 80px;
+	height: 15px;
+	background-color: #F3F3F3;
+	border: 1px solid white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	color: white;
+	display: inline-block;
+	padding-bottom: 5px;
+}
+.formulaire{
+	width: 100%;
+	height: auto;
+	background-color: #F2F2F2;
+	display: flex;
+	margin-top: 150px;
+	text-align: none;
+	padding: 15px 30px;
+
+}
+.bloc_lire-la-suite{
+	width : 20%;
+	height: 30px;
+	display: flex;
+	align-self: flex-end;
+	
+}
+.bar_footer{
+	width:100%;
+	height: 50px;
+	position : relative;
+	display: flex;
+	align-self: flex-end;
+	top: 800px;
+	background-color : white;
+}
+
+.container_chapitre{
+	position: relative;
+	top: 0;
+max-width : 1200px;
+display: inline-block;
+	width : 15%;
+height: auto;
+margin-top: 60px;
+}
+
+.auteur{
+	color: #356fa6;
+	font-size: 18px;
+}
+.brouillon_side {
+display: inline-block;
+width : 15%;
+height: auto;
+margin-top: 60px;
+}
+
+.bar_menu{
+display: flex;
+flex-flow: row;
+justify-content: space-around;
+}
+
+a.bouton{
+    -moz-appearance: button;
+    -webkit-appearance: button;
+    appearance: button;
+    /* width: 10px; */
+    /* height: auto; */
+    text-decoration: none;
+    color: initial;
+    margin-left: 40px;
+    padding: 0px 10px 2px;
+}
+
+table{
+	border-collapse: collapse;
+
+}
+
+td,th{
+	border:1px solid black;
+	padding: 10px;
+
+}
+
+th{
+	background-color: orange;
+}
+
+th{
+	background-color: blue;
+}

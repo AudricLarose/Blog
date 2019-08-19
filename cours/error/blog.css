@@ -1,0 +1,60 @@
+body {
+	background-color : #fffbf1;
+}
+
+.bar_menu{
+	width:100%;
+	height: 100px;
+	position : relative;
+	top: 150px;
+}
+
+
+.container{
+max-width : 1200px;
+	margin: 0 auto;
+	width : 70%;
+
+}
+
+.bloc_extrait_index{
+width : 50%;
+height: 250px;
+	margin : 0 auto ;
+	display : flex ;
+	flex-flow: column wrap;
+	justify-content : center;
+
+}
+
+.bloc_titre {
+	width: 100%;
+	height : 50px;
+}
+
+.sous_bloc_date-text{
+	width : 100%;
+	height: 200px;
+	display: flex;
+	flex-flow : column wrap;
+
+}
+.bloc_date{
+	width: 100%;
+	height: 50PX;
+
+}
+
+.bloc_text{
+	width : 100%;
+	height : 100px;
+	display : flex;
+	justify-content: flex-end;
+
+}
+
+.bloc_lire-la-suite{
+	width : 20%;
+	height: 30px;
+	
+}
