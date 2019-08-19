@@ -88,8 +88,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="container_text marge2">
 
     <div class="plusmenu">
