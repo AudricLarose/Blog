@@ -1,5 +1,6 @@
 <?php
-class Signal_controller { 
+class Signal_controller
+{ 
 public function signal(){
     $content_onglet_titre="Signal";
     $session=sessionactive();

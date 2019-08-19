@@ -1,7 +1,7 @@
   <?php
   class Initial_controller 
   { 
-    public function init (){
+    public function init(){
      if (isset($_POST['commentaire'])){
       $action =new affichage;
       $action->commentaire();
