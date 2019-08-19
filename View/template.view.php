@@ -18,8 +18,6 @@
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/bibliotheque_UX.css">
 </head>
-
-
 <body>
 
   <div class="bloc_principal" id="mydiv">
