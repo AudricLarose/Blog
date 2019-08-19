@@ -1,7 +1,7 @@
 <?php
 class Admin_controller
 {
-    public function admin ($error){
+    public function admin($error){
         $content_onglet_titre="Admin connection";
         $session=sessionactive();
         try {
@@ -21,16 +21,16 @@ class Admin_controller
             break;
             }
             }
-require 'View/administrateur.view.php';			
-$body= new Body_controller;
-$body->body($content,$content_onglet_titre);			}
-else {
-header('location:index.php');
-}
-} catch (Exception $e){
-$content = $e->getMessage();
-$body= new Body_controller;
-$body->body($content,$content_onglet_titre);
-}
-}
-}
+    require 'View/administrateur.view.php';			
+    $body= new Body_controller;
+    $body->body($content,$content_onglet_titre);			}
+    else {
+    header('location:index.php');
+    }
+    } catch (Exception $e){
+    $content = $e->getMessage();
+    $body= new Body_controller;
+    $body->body($content,$content_onglet_titre);
+    }
+    }
+    }

@@ -1,5 +1,6 @@
  <?php
-  class Antidoublon_controller {
+  class Antidoublon_controller 
+  {
     public function antidoublons($x,$y){
     $data= new affichage;
     $recherche= $data->spot($x); 

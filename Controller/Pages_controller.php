@@ -1,12 +1,12 @@
 <?php
 class Pages_controller 
 {
-    public function forme ($x){
+    public function forme($x){
         $texte1=strtolower($x);
         $texte_mod=ucwords($texte1);
         return $texte_mod;
     }
-    public function pages ($error,$success){
+    public function pages($error,$success){
         $content_onglet_titre="Chapitres";
         try {
             $id=$_GET["id"];
