@@ -1,18 +1,20 @@
 <?php
-require 'Controller/controller.php';
-require 'Controller/formulaire.controller.php';
-require 'Controller/index.controller.php';
-require 'Controller/body.controller.php';
-require 'Controller/admin.controller.php';
 require 'Controller/session.controller.php';
-require 'Controller/page.controller.php';
-require 'Controller/ecriture.controller.php';
-require 'Controller/signal.controller.php';
-require 'Controller/deconnecte.controller.php';
+require 'Controller/Lancement_session_controller.php';
+require 'Controller/Initial_controller.php';
+require 'Controller/Index_controller.php';
+require 'Controller/Body_controller.php';
+require 'Controller/Admin_controller.php';
+require 'Controller/Pages_controller.php';
+require 'Controller/Ecriture_controller.php';
+require 'Controller/Signal_controller.php';
+require 'Controller/Deconnecte_controller.php';
+require 'Controller/Antidoublon_controller.php';
+require 'Controller/Extrait_controller.php';
 
-$action =new initial;
+$action =new Initial_controller;
 $action->init();
-$action= new controller;
+$action= new Lancement_session_controller;
 $action->session_go ();
 
 if (isset($_GET['action'])){       
@@ -32,7 +34,7 @@ if (isset($_GET['action'])){
     } else {
       $success = " ";
     }
-    $action= new Pages_class;
+    $action= new Pages_controller;
     $action->pages($error,$success);
     break;
     case 'montrer_admin': 
@@ -41,16 +43,16 @@ if (isset($_GET['action'])){
     } else {
       $error = " ";
     }
-    $action= new Admin_class;
+    $action= new Admin_controller;
     $action->admin ($error);
     break;
     case 'montrer_signal':
-    $action= new Signal_class;
+    $action= new Signal_controller;
     $action->signal ();
     break;
     
     case 'deco':
-    $action= new Deco_class;
+    $action= new Deconnecte_controller;
     $action->deconnecte();
     break;
 
@@ -60,7 +62,7 @@ if (isset($_GET['action'])){
     } else {
       $success = " ";
     }
-    $action= new Ecriture_class;
+    $action= new Ecriture_controller;
     $action->ecriture(0,0,$success);
     break;
 
@@ -68,12 +70,12 @@ if (isset($_GET['action'])){
     $success = " ";
     if (isset($_GET['id'])) { 
       $id=$_GET['id'];
-      $action= new Ecriture_class;
+      $action= new Ecriture_controller;
       $action->ecriture($id,'brouillon',$success);
     } 
     if (isset($_GET['id_chapitre'])) { 
       $id_chapitre=$_GET['id_chapitre'];  
-      $action= new Ecriture_class;
+      $action= new Ecriture_controller;
       $action->ecriture($id_chapitre,'posts4', $success);
     }
     break;
@@ -84,7 +86,7 @@ if (isset($_GET['action'])){
 
  default:
 require 'View/erreur_404.php';
-      $action= new Body_class;
+      $action= new Body_controller;
         $action->body($content);
 
       break;
@@ -95,6 +97,6 @@ require 'View/erreur_404.php';
 
 } else  {
 
-  $action= new Index_class;
+  $action= new Index_controller;
   $action->index();
 }

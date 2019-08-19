@@ -1,8 +1,7 @@
-	<?php ob_start();?>
-
+<?php ob_start();?>
 <?php
 foreach($posts_datas as $posts_data){
-    $xtrait= new Index_class;
+    $xtrait= new Extrait_controller;
     $extrait= $xtrait->extrait($posts_data["body"], 80 );
     ?>
     <div class="bloc_extrait_index isRound ">
@@ -12,6 +11,4 @@ foreach($posts_datas as $posts_data){
     </div></div></div> 
     <?php
 } ?>
-
-
 	<?php $content=ob_get_clean();?>

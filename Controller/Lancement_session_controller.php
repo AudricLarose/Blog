@@ -1,10 +1,7 @@
-
-
 <?php 
 require './Model/model.php';
 
-class controller {
-
+class Lancement_session_controller {
 	public function session_go (){
 		session_start();
 	}

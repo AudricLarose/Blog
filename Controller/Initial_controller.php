@@ -1,21 +1,6 @@
-
 <?php
-
-class initial 
+class Initial_controller 
 { 
-  public function antidoublons($x,$y){
-    $data= new affichage;
-    $recherche= $data->spot($x);
-    if (isset($recherche)) {
-      foreach ($recherche as $recherches) {
-        if (in_array($y,$recherches)){
-          return true;
-          exit();
-        }
-      }
-    }
-  }
-
   public function init (){
    if (isset($_POST['commentaire'])){
     $action =new affichage;

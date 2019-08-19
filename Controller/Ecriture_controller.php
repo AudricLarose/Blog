@@ -1,9 +1,7 @@
-	<?php
-
-class Ecriture_class { 
+<?php
+class Ecriture_controller { 
 	public function ecriture ($a,$b,$success){
-					$content_onglet_titre="Creation";
-
+		$content_onglet_titre="Creation";
 		$session=sessionactive();
 		if ($session=='ok'){
 			switch ($success) {
@@ -41,7 +39,7 @@ class Ecriture_class {
 require 'View/erreur_404.php';
 
 		}
-$body= new Body_class;			
+$body= new Body_controller;			
 $body->body($content,$content_onglet_titre);
 
 	}

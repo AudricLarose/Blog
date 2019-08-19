@@ -1,8 +1,5 @@
 <?php
-/**
- * 
- */
-class Admin_class
+class Admin_controller
 {
 		public function admin ($error){
 			$content_onglet_titre="Admin connection";
@@ -26,7 +23,7 @@ class Admin_class
 					}
 				}
 				require 'View/administrateur.view.php';			
-	$body= new Body_class;
+	$body= new Body_controller;
 			
 				$body->body($content,$content_onglet_titre);			}
 			else {
@@ -34,9 +31,8 @@ class Admin_class
 			}
 		} catch (Exception $e){
 			$content = $e->getMessage();
-	$body= new Body_class;
+	$body= new Body_controller;
 			
 				$body->body($content,$content_onglet_titre);		}
 	}
 }
-?>

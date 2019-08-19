@@ -30,8 +30,8 @@
     </div>
     <div class="navig isRound isFade">
       <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-around"> 
-        <ul class="navbar-nav"><div class="row">
-         <div class="col-sm-4"><li class="nav-item"> <a href="index.php" class ='nav-link isWhite' >index</a></li></div>
+        <ul class="navbar-nav row col-sm-4"><li class="nav-item"> <a href="index.php" class ='nav-link isWhite' >index</a></li>
+         
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle isWhite" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Chapitre
@@ -39,7 +39,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <?php
            foreach($posts_datas as $posts_data){
-            $xtrait= new Index_class;
+            $xtrait= new Extrait_controller;
             $titre_extrait= $xtrait->extrait($posts_data["title"], 4 );
             ?>
 
@@ -60,11 +60,11 @@
             ?>
             <a href="index.php?action=montrer_signal" class="dropdown-item">signal(<?php echo $addition["SUM(signalement)"]?>) </a>
           <?php } ?>
-          <a href="index.php?action=deco" class="dropdown-item">deconnexion</a></li>
+          <a href="index.php?action=deco" class="dropdown-item">deconnexion</a></div></li>
         <?php }else{ ?>
-         <div class="col-sm-4"><li class="nav-item"><a href="index.php?action=montrer_admin" class ='nav-link'>Admin</a></li></div>
+          <li class="col-sm-4 nav-item"><a href="index.php?action=montrer_admin" class ='nav-link'>Admin</a></li>
        <?php }?>
-     </div>  
+     </ul>  
    </nav>
  </div>
  <div class='big_box bloc6 isBCWhite '>
@@ -94,12 +94,13 @@
 
   <div class="container_text marge2">
 
-    <ul class="plusmenu">
+    <div class="plusmenu">
         <?= $content_invite_admin; ?>     
         <?= $content_body; ?>     
-    </div></div></div> 
+    </div></div>
+    </div></div>
+  <script src="js/appli.js"></script>
 
   </body>
-  <script src="js/appli.js"></script>
 
   </html>

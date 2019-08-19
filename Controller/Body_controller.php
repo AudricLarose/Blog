@@ -1,6 +1,5 @@
 <?php
-
-class Body_class {
+class Body_controller {
 	public function body ($content_body,$content_onglet_titre){
 		$session=sessionactive();
 		if ($session=='ok'){

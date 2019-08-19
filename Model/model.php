@@ -112,7 +112,6 @@ class affichage extends Connexion {
 	}
 
 	public function verifie(){
-		echo'ok verifie';
 		$username=$_POST['nom'];
 		$password=$_POST['password'];
 		if (empty($username) || (empty($password))){
@@ -125,8 +124,10 @@ class affichage extends Connexion {
 			while ($ssql=$sql->fetch()){
 				$passwordcheck=password_verify($password, $ssql['password']);
 				if ($passwordcheck==true){
+					session_start();
 					$_SESSION['admin']= 'ok';
 					header('location:index.php');
+					var_dump($_SESSION['admin']);
 				} 	else {
 					header('location:index.php?action=montrer_admin&error=wrongpwd');
 				}

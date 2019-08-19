@@ -1,5 +1,5 @@
-	<?php
-class Pages_class { 
+<?php
+class Pages_controller { 
 		public function forme ($x){
 		$texte1=strtolower($x);
 		$texte_mod=ucwords($texte1);
@@ -37,16 +37,16 @@ class Pages_class {
 			if ($bloc_text_titres){
 				$comment=new affichage;
 				$commentaires= $comment->show_comment();
-				$forme= new Pages_class;
+				$forme= new Pages_controller;
 				require 'View/pagecom.view.php';
-				$body= new Body_class;
+				$body= new Body_controller;
 				$body->body($content,$content_onglet_titre);} else {
 					throw new Exception("Impossible d'afficher la page car elle ne figure pas sur la base de données");
 
 				}
 			} catch (Exception $e){
 				$content = $e->getMessage();
-				$body= new Body_class;
+				$body= new Body_controller;
 			
 				$body->body($content,$content_onglet_titre);
 			}

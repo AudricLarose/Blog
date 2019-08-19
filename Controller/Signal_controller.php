@@ -1,6 +1,5 @@
-	<?php
-
-class Signal_class { 
+<?php
+class Signal_controller { 
 	public function signal(){
 					$content_onglet_titre="Signal";
 

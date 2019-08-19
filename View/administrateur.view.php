@@ -1,5 +1,4 @@
-
-	<?php ob_start();?>
+<?php ob_start();?>
 
 	          <div class="isRedBcg"><?= $content_admin; ?></div>
 	          <br>
@@ -11,4 +10,3 @@ mot de passe  : <br><input type="password" name="password" required="required" /
 </form>
 </div>
 	<?php $content=ob_get_clean();?>
-

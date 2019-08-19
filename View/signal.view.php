@@ -1,5 +1,4 @@
-
-  <?php ob_start();?>
+<?php ob_start();?>
 
 <h1> Signalements</h1>
 <table>

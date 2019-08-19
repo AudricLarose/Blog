@@ -1,4 +1,4 @@
-	<?php ob_start();?>
+<?php ob_start();?>
   <br><br>
   <div class="isGreen"><?= $content_success; ?></div>
     <br><br>
