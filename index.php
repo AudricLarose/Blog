@@ -50,7 +50,6 @@ if (isset($_GET['action'])){
     $action= new Deconnecte_controller;
     $action->deconnecte();
     break;
-
     case 'montrer_ecriture':
     if (isset($_GET['success'])) {
       $success=$_GET['success'];
@@ -76,11 +75,11 @@ if (isset($_GET['action'])){
     case 'verifie':
     require 'formulaire.controller.php';
     break;
- default:
-require 'View/erreur_404.php';
-      $action= new Body_controller;
-        $action->body($content);
-      break;
+    default:
+    require 'View/erreur_404.php';
+    $action= new Body_controller;
+    $action->body($content);
+    break;
   }
 } else  {
   $action= new Index_controller;

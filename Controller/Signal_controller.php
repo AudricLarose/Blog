@@ -1,7 +1,7 @@
 <?php
 class Signal_controller
-{ 
-public function signal(){
+{   
+    public function signal(){
     $content_onglet_titre="Signal";
     $session=sessionactive();
     if ($session=='ok'){

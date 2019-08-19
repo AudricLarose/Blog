@@ -23,8 +23,8 @@ class Admin_controller
             }
     require 'View/administrateur.view.php';			
     $body= new Body_controller;
-    $body->body($content,$content_onglet_titre);			}
-    else {
+    $body->body($content,$content_onglet_titre);
+    }else {
     header('location:index.php');
     }
     } catch (Exception $e){

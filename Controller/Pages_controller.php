@@ -16,18 +16,18 @@ class Pages_controller
                 break;
                 case ' ':
                 $content_formu= " ";
-            break;
+                break;
             }
             switch ($success) {
             case 'valide':
             $content_success= " Votre message a bien été validé";
             break;
-                case 'signaler':
-                $content_success= " Ce commentaire a bien été signalé";
-                break;
-                case ' ':
-                $content_success= " ";
-                break;
+            case 'signaler':
+            $content_success= " Ce commentaire a bien été signalé";
+            break;
+            case ' ':
+            $content_success= " ";
+            break;
             }
             $menus= new affichage;
             $bloc_text_titres = $menus->lecture('posts4');
