@@ -1,42 +1,44 @@
 <?php
+namespace controller;
 class Ecriture_controller
 {
-    public function ecriture($a,$b,$success){
+    public function ecriture($a,$b,$success)
+    {
         $content_onglet_titre="Creation";
         $session=sessionactive();
-        if ($session=='ok'){
+        if ($session=='ok') {
             switch ($success) {
                 case 'ajout':
-                $content_feedback=' ajout effectué !';
+                    $content_feedback=' ajout effectué !';
                 break;
                 case 'maj':
-                $content_feedback=' mise a jour effectué !';
+                    $content_feedback=' mise a jour effectué !';
                 break;
                 case ' ':
-                $content_feedback= " ";
+                    $content_feedback= " ";
                 break;
             }
-                if ($a!==0){
+            if ($a!==0) {
                 $brouill= new affichage;
-				$x=$brouill->lecture($b);
+                $x=$brouill->lecture($b);
                 $xt=$x[0]["title"];
                 $xb=$x[0]["body"];
-                }elseif ($a===0){
+            } elseif ($a===0) {
                 $xt= ' ';
                 $xb= ' ';
-            }
+                }
             $brouill= new affichage;
             $brouillon=$brouill->spot('brouillon');
-            if (isset($brouillon)){
+            if (isset($brouillon)) {
                 require 'View/brouillon.admin.view.php';
-            } else  {
+            } else {
                 $content_brouillon='pas de brouillon';
-             }
-             require 'View/ecriture.view.php'; 
+            }
+             require 'View/ecriture.view.php';
         } else {
-        require 'View/erreur_404.php';
-		}
+            require 'View/erreur_404.php';
+        }
         $body= new Body_controller;			
-        $body->body($content,$content_onglet_titre);
-	}
+        $body->body($content, $content_onglet_titre);
+    }
 }
