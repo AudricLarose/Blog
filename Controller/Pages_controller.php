@@ -1,5 +1,6 @@
 <?php
 namespace controller;
+
 class Pages_controller
 {
     public function forme($x)
@@ -16,21 +17,21 @@ class Pages_controller
             switch ($error) {
                 case 'champs_vide':
                     $content_formu= " il faut remplir les champs avant de valider";
-                break;
+                    break;
                 case ' ':
                     $content_formu= " ";
-                break;
+                    break;
             }
             switch ($success) {
                 case 'valide':
                     $content_success= " Votre message a bien été validé";
-                break;
+                    break;
                 case 'signaler':
                     $content_success= " Ce commentaire a bien été signalé";
-                break;
+                    break;
                 case ' ':
                     $content_success= " ";
-                break;
+                    break;
             }
             $menus= new affichage;
             $bloc_text_titres = $menus->lecture('posts4');
