@@ -2,7 +2,8 @@
 namespace controller ;
 class Body_controller
 {
-    public function body($content_body, $content_onglet_titre) {
+    public function body($content_body, $content_onglet_titre)
+    {
         $session=sessionactive();
         if ($session=='ok') {
             $content_invite_admin='  Bonjour, Monsieur Forteroche.';

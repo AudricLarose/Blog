@@ -1,7 +1,7 @@
-  <?php
+<?php
 namespace controller ;
 
-class Initial_controller 
+class Initial_controller
 { 
     public function init()
     {
