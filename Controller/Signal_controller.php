@@ -1,5 +1,6 @@
 <?php
 namespace controller;
+
 class Signal_controller
 {
     public function signal()

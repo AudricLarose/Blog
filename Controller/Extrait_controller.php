@@ -1,5 +1,6 @@
 <?php
 namespace controller ;
+
 class Extrait_controller
 {
     public function extrait($x, $y)
