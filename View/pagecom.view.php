@@ -7,24 +7,24 @@
     <br>
     <br>
     <h2 class='titre'>
-    <?php  foreach($bloc_text_titres as $bloc_text_titre){
-     echo $bloc_text_titre["title"];
-   }
+    <?php  foreach ($bloc_text_titres as $bloc_text_titre) {
+        echo $bloc_text_titre["title"];
+    }
    ?></h2>
     <div class='texte_colonne'>
         <?php  foreach($bloc_text_titres as $bloc_text_titre){
        echo $bloc_text_titre['body'] ;  
-     }
-     ?>
+        }
+        ?>
     </div>
     <div class='comment'>
         <div class="show_comment">
             <?php
-      if ($commentaires){
-        foreach ($commentaires as $commentaire) {
-          $nom=$commentaire['auteur'];
-          $auteur=$forme->forme($nom);
-          ?>
+            if ($commentaires){
+                foreach ($commentaires as $commentaire) {
+                    $nom=$commentaire['auteur'];
+                    $auteur=$forme->forme($nom);
+            ?>
                 <form action='index.php' method='POST'>
                     <br>
                     <div class="auteur"><strong><?php echo  $auteur ?></strong></div>
@@ -37,12 +37,12 @@
                     <input name="idke" type="hidden" value=' <?php echo $id ?>' />
                     <button type="submit" name="signaler">signaler</button>
                     <input name="idk" type="hidden" value="<?php echo $commentaire['id'] ?>" /> </form>
-                <?php 
-
-        }} else {
-          echo' Pas de commentaire, soyez le premier a vous exprimer !';
-        }
-        ?>
+                <?php
+                }
+            } else {
+                echo' Pas de commentaire, soyez le premier a vous exprimer !';
+                }
+            ?>
         </div>
     </div>
     <div class='formulaire'>
@@ -74,24 +74,23 @@
         <br>
         <h2 class='titre'>
     <?php  foreach($bloc_text_titres as $bloc_text_titre){
-     echo $bloc_text_titre["title"];
-
-   }
+        echo $bloc_text_titre["title"];
+    }
    ?></h2>
         <div class='texte_colonne'>
             <?php  foreach($bloc_text_titres as $bloc_text_titre){
-       echo $bloc_text_titre['body'] ;  
-     }
-     ?>
+                echo $bloc_text_titre['body'] ;
+            }
+        ?>
         </div>
         <div class='comment'>
             <div class="show_comment">
                 <?php
-      if ($commentaires){
-        foreach ($commentaires as $commentaire) {
-          $nom=$commentaire['auteur'];
-          $auteur=$forme->forme($nom);
-          ?>
+                if ($commentaires){
+                    foreach ($commentaires as $commentaire) {
+                        $nom=$commentaire['auteur'];
+                        $auteur=$forme->forme($nom);
+            ?>
                     <form action='index.php' method='POST'>
                         <br>
                         <div class="auteur"><strong><?php echo  $auteur ?></strong></div>
@@ -104,11 +103,11 @@
                         <input name="idke" type="hidden" value=' <?php echo $id ?>' />
                         <button type="submit" name="signaler">signaler</button>
                         <input name="idk" type="hidden" value="<?php echo $commentaire['id'] ?>" /> </form>
-                    <?php 
-
-        }} else {
-          echo' Pas de commentaire, soyez le premier a vous exprimer !';
-        }
+                    <?php
+                    }
+                } else {
+                    echo' Pas de commentaire, soyez le premier a vous exprimer !';
+                }
         ?>
             </div>
         </div>
@@ -130,5 +129,6 @@
                 <br />
                 <br>
                 <button type="submit" name="commentaire">commenter</button>
-                <br> </div> >>>>>>> f3a9d69277cc24021ba2624ce29b287abc992251
+                <br> </div>
         <?php $content=ob_get_clean();?>
+        

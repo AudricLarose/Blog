@@ -43,15 +43,15 @@ $action=$_GET['action'];
             }
             $action= new Admin_controller;
             $action->admin($error);
-        break;
+            break;
         case 'montrer_signal':
             $action= new Signal_controller;
             $action->signal();
-        break;
+            break;
         case 'deco':
             $action= new Deconnecte_controller;
             $action->deconnecte();
-        break;
+            break;
         case 'montrer_ecriture':
             if (isset($_GET['success'])) {
                 $success=$_GET['success'];
@@ -60,7 +60,7 @@ $action=$_GET['action'];
             }
             $action= new Ecriture_controller;
             $action->ecriture(0, 0, $success);
-        break;
+            break;
         case 'modification':
             $success = " ";
             if (isset($_GET['id'])) {
@@ -73,15 +73,15 @@ $action=$_GET['action'];
                 $action= new Ecriture_controller;
                 $action->ecriture($id_chapitre, 'posts4', $success);
             }
-        break;
+            break;
         case 'verifie':
             require 'formulaire.controller.php';
-        break;
+            break;
         default:
             require 'View/erreur_404.php';
             $action= new Body_controller;
             $action->body($content);
-        break;
+            break;
     }
 } else {
     $action= new Index_controller;

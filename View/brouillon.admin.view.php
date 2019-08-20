@@ -5,9 +5,9 @@
     <tr>
         <th class="center">titre du brouillon</th>
     </tr>
-    <?php 
+    <?php
     foreach ($brouillon as $brouillons) {
-      ?>
+        ?>
       <tr>
         <td class="center">
             <a href="index.php?action=modification&id=<?= $brouillons['id'] ?>">
@@ -21,7 +21,7 @@
             </form>
         </td>
     </tr>
-<?php }  ?>
+    <?php } ?>
 </table>
 </div>
 <?php $content_brouillon=ob_get_clean();?>
