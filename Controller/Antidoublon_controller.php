@@ -1,5 +1,5 @@
- <?php
- class Antidoublon_controller
+<?php
+class Antidoublon_controller
 {
     public function antidoublons($x, $y)
     {
@@ -7,7 +7,7 @@
         $recherche= $data->spot($x); 
         if (isset($recherche)) {
             foreach ($recherche as $recherches) {
-                if (in_array($y,$recherches)){
+                if (in_array($y, $recherches)) {
                     return true;
                     exit();
                 }

@@ -1,8 +1,7 @@
 <?php
 namespace controller;
 
-class Ecriture_controller
-{
+class Ecriture_controller {
     public function ecriture($a, $b, $success)
     {
         $content_onglet_titre="Creation";
