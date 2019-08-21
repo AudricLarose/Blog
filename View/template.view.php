@@ -40,7 +40,7 @@
                 <?php
                 foreach ($posts_datas as $posts_data) {
                     $xtrait= new \controller\Extrait_controller();
-                    $titre_extrait= $xtrait->extrait($posts_data["title"], 4 );
+                    $titre_extrait= $xtrait->extrait($posts_data["title"], 4);
                     ?>
                   <a class="dropdown-item" href="index.php?action=montrer_chapitre&id=<?php echo $posts_data['id'] ?>">
                     <?php echo $titre_extrait.'[...]' ?>
@@ -56,11 +56,11 @@
                 <?php
                 foreach ($additions as $addition) {
                     ?><a href="index.php?action=montrer_signal" class="dropdown-item">signal(<?php echo $addition["SUM(signalement)"]?>) </a>
-                    <?php } ?> <a href="index.php?action=deco" class="dropdown-item">deconnexion</a></div>
+            <?php } ?> <a href="index.php?action=deco" class="dropdown-item">deconnexion</a></div>
                 </li>
                     <?php } else { ?>
                 <li class="col-sm-4 nav-item"><a href="index.php?action=montrer_admin" class='nav-link'>Admin</a></li>
-                <?php }?>
+                    <?php }?>
             </ul>
           </nav>
         </div>
@@ -79,12 +79,12 @@
                     <h3><?php echo $posts_data["title"] ?></h3> </a>
                     <form action='index.php?action=montrer_ecriture' method='POST'>
                       <input name="idk" type="hidden" value="<?php echo $posts_data['id'] ?>" />
-                  <?php  if (isset($_SESSION['admin'])) { ?>
+                <?php  if (isset($_SESSION['admin'])) { ?>
                         <button name='supprimer_chapitre' value='supprimer'>Supprimer</button> <a href=index.php?action=modification&id_chapitre=<?php echo $posts_data[ "id"] ?> class="bouton">modifier</a></form>
                         <?php } else { ?>
                       </form>
                         <?php
-                      }
+                        }
                 }
                     ?>
                 </div>

@@ -9,12 +9,12 @@
     <h2 class='titre'>
     <?php  foreach ($bloc_text_titres as $bloc_text_titre) {
         echo $bloc_text_titre["title"];
-}
+    }
     ?></h2>
     <div class='texte_colonne'>
         <?php  foreach ($bloc_text_titres as $bloc_text_titre) {
-            echo $bloc_text_titre['body'] ;  
-        }
+            echo $bloc_text_titre['body'];
+}
         ?>
     </div>
     <div class='comment'>

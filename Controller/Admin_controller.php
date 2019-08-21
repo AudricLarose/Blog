@@ -18,8 +18,8 @@ class Admin_controller
                             break;
                         case 'champs_vide':
                             $content_admin= " il faut remplir les champs avant de valider";
-	                        break;
-		                case ' ':
+                            break;
+                        case ' ':
                             $content_admin= " ";
                             break;
                     }

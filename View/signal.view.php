@@ -5,9 +5,9 @@
         <th class="center">message</th>
         <th>nombre de signalement/option </th>
     </tr>
-    <?php 
+    <?php
     foreach ($table as $tables) {
-       ?>
+        ?>
        <tr>
         <td class="center">
             <?php echo $tables['commentaire'] ;?>
@@ -20,7 +20,7 @@
             </form>
         </td>
     </tr>
-<?php } ?>
+    <?php } ?>
 </table>
 <div class='texte_colonne'></div>
 </div>

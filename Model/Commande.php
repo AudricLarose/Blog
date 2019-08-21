@@ -1,7 +1,8 @@
 <?php
 namespace model;
 
-class Commande extends Connexion {
+class Commande extends Connexion 
+{
     public function supprimer($x)
     {
         $id=$_POST['idk'];
