@@ -1,7 +1,7 @@
 <?php
 namespace controller ;
-class Body_controller
-{
+
+class Body_controller {
     public function body($content_body, $content_onglet_titre)
     {
         $session=sessionactive();
@@ -10,7 +10,7 @@ class Body_controller
         } else {
             $content_invite_admin='  Bonjour, invité.';
         }
-        $bdd_data= new affichage;
+        $bdd_data= new \model\Affichage();
         $posts_datas=$bdd_data->spot('posts4');
         $additions=$bdd_data->addition('signalement', 'commentaire');
         require "View/template.view.php";

@@ -1,7 +1,6 @@
 <?php ob_start();?>
-<?php  ?>
 <div class='isBlue'>
-    <?= $content_feedback; ?>
+    <?= $content_feedback;?>
 </div>
 <form action="index.php?action=montrer_ecriture" method="POST"> Titre de la publication:
     <br>
@@ -18,6 +17,5 @@
     <button name="sauvegarde" value="Sauvegarde">Sauvegarde</button>
     <button name="reset" value="reset">reset</button>
 </form>
-<?= $content_brouillon; ?>
-</div>
+<?= $content_brouillon;?>
 <?php $content=ob_get_clean();?>

@@ -1,10 +1,10 @@
 <?php
-namespace model
-class Commande extends Connexion
-{
+namespace model;
+
+class Commande extends Connexion {
     public function supprimer($x)
     {
-        id=$_POST['idk'];
+        $id=$_POST['idk'];
         $ide=intval($id);	
         $req='DELETE FROM '.$x.' WHERE id=?';
         $resultat=$this->connected()->prepare($req);

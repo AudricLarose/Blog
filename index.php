@@ -1,4 +1,6 @@
 <?php
+namespace controller;
+
 require 'Controller/session.controller.php';
 require 'Controller/Lancement_session_controller.php';
 require 'Controller/Initial_controller.php';

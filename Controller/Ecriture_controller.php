@@ -19,7 +19,8 @@ class Ecriture_controller {
                     break;
             }
             if ($a!==0) {
-                $brouill= new affichage;
+                echo 'ok';
+                $brouill= new \model\Affichage();
                 $x=$brouill->lecture($b);
                 $xt=$x[0]["title"];
                 $xb=$x[0]["body"];
@@ -27,16 +28,18 @@ class Ecriture_controller {
                 $xt= ' ';
                 $xb= ' ';
             }
-            $brouill= new affichage;
+            $brouill= new \model\Affichage();
             $brouillon=$brouill->spot('brouillon');
             if (isset($brouillon)) {
                 require 'View/brouillon.admin.view.php';
             } else {
                 $content_brouillon='pas de brouillon';
             }
-             require 'View/ecriture.view.php';
+            echo "fonctionne";
+            require 'View/ecriture.view.php';
         } else {
             require 'View/erreur_404.php';
+        }
         $body= new Body_controller;
         $body->body($content, $content_onglet_titre);
     }

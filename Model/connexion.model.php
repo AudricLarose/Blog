@@ -1,5 +1,6 @@
 <?php
-namespace modele;
+namespace model;
+
 class Connexion
 {
     private $serveur='localhost';
@@ -9,7 +10,7 @@ class Connexion
     public function connected()
     {
         try {
-            $conn= new PDO ('mysql:host='.$this->serveur.';dbname='.$this->bddname,$this->name,$this->passwword);
+            $conn= new \PDO ('mysql:host='.$this->serveur.';dbname='.$this->bddname,$this->name,$this->passwword);
             return $conn;
             } catch (Exception $e) {
                 echo ' connexion echouée a la base de donnée';

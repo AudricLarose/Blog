@@ -33,10 +33,10 @@ class Pages_controller
                     $content_success= " ";
                     break;
             }
-            $menus= new affichage;
+            $menus= new \model\Affichage();
             $bloc_text_titres = $menus->lecture('posts4');
             if ($bloc_text_titres) {
-                $comment=new affichage;
+                $comment=new \model\Affichage();
                 $commentaires= $comment->show_comment();
                 $forme= new Pages_controller;
                 require 'View/pagecom.view.php';

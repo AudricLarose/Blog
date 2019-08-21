@@ -39,10 +39,10 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <?php
                 foreach ($posts_datas as $posts_data) {
-                    $xtrait= new Extrait_controller;
+                    $xtrait= new \controller\Extrait_controller();
                     $titre_extrait= $xtrait->extrait($posts_data["title"], 4 );
                     ?>
-                  <a class="dropdown-item" href="index.php?action=montrer_chapitre&id=<?php echo $posts_data[" id "] ?>">
+                  <a class="dropdown-item" href="index.php?action=montrer_chapitre&id=<?php echo $posts_data['id'] ?>">
                     <?php echo $titre_extrait.'[...]' ?>
                   </a>
                 <?php } ?>
@@ -75,7 +75,7 @@
                 <?php
                 foreach ($posts_datas as $posts_data) {
                     ?>
-                  <a href="index.php?action=montrer_chapitre&id=<?php echo $posts_data[" id "]?>" class="nav-link2">
+                  <a href="index.php?action=montrer_chapitre&id=<?php echo $posts_data['id']?>" class="nav-link2">
                     <h3><?php echo $posts_data["title"] ?></h3> </a>
                     <form action='index.php?action=montrer_ecriture' method='POST'>
                       <input name="idk" type="hidden" value="<?php echo $posts_data['id'] ?>" />

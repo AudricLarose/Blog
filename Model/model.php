@@ -1,10 +1,11 @@
 <?php
+namespace model;
+
 include_once 'Model/connexion.model.php';
-namespace model
 class Affichage extends Connexion
 {
     public function spot($x)
-    {	
+    {
         $req='SELECT * FROM '.$x.' ORDER BY id DESC' ;
         $resultat=$this->connected()->prepare($req);
         $resultat->execute();
@@ -14,7 +15,7 @@ class Affichage extends Connexion
             }
             return $data;
         }
-	}
+    }
     public function addition($y, $x)
     {
         $req='SELECT SUM('.$y.') FROM '.$x ;
@@ -26,7 +27,7 @@ class Affichage extends Connexion
         return $data;
     }
     public function spot_comment()
-    {	
+    {
         $req='SELECT * FROM commentaire ORDER BY signalement DESC' ;
         $resultat=$this->connected()->prepare($req);
         $resultat->execute();
@@ -82,7 +83,7 @@ class Affichage extends Connexion
         if (empty($mail) || empty($nom) || empty($commentaire)) {
             header('location:index.php?action=montrer_chapitre&id='.$id.'&error=champs_vide');
         } else {
-            $req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES (?,?,?,?,?)"; 
+            $req="INSERT INTO commentaire (auteur, mail, commentaire, signalement, id_comment) VALUES (?,?,?,?,?)";
             $resultat=$this->connected()->prepare($req);
             $resultat->execute([$nom,$mail,$commentaire,0,$id]);
             header('location:index.php?action=montrer_chapitre&id='.$id.'&success=valide');
@@ -93,13 +94,13 @@ class Affichage extends Connexion
         echo'ok login';
         $username=$_POST['nom'];
         $password=$_POST['password'];
-        if (empty($username) || empty($password)){
+        if (empty($username) || empty($password)) {
             exit();
         } elseif (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
             exit();
         } else {
             $hashepwd=password_hash($password, PASSWORD_DEFAULT);
-            $req="INSERT INTO user (user, password) VALUES (?,?)"; 
+            $req="INSERT INTO user (user, password) VALUES (?,?)";
             $resultat=$this->connected()->prepare($req);
             $resultat->execute([$username,$hashepwd]);
         }
@@ -117,7 +118,7 @@ class Affichage extends Connexion
             $sql->execute();
             while ($ssql=$sql->fetch()) {
                 $passwordcheck=password_verify($password, $ssql['password']);
-                if ($passwordcheck==true){
+                if ($passwordcheck==true) {
                     session_start();
                     $_SESSION['admin']= 'ok';
                     header('location:index.php');

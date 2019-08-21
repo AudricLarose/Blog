@@ -8,7 +8,7 @@ class Signal_controller
         $content_onglet_titre="Signal";
         $session=sessionactive();
         if ($session=='ok') {
-            $comment= new affichage();
+            $comment= new \model\Affichage();
             $table=$comment->spot_comment();
             if (!empty($table)) {
                 require 'View/signal.view.php';
@@ -18,7 +18,7 @@ class Signal_controller
         } else {
             require 'View/erreur_404.php';
         }
-        $body= new Body_class;
+        $body= new Body_controller;
         $body->body($content, $content_onglet_titre);
     }
 }
