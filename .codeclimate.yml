@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 plugins:
   phpcodesniffer:
+=======
+plugins:
+  phpcodesniffer:
+>>>>>>> f3a9d69277cc24021ba2624ce29b287abc992251
     enabled: true

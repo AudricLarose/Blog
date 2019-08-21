@@ -1,4 +1,6 @@
 <?php
+namespace controller;
+
 require 'Controller/session.controller.php';
 require 'Controller/Lancement_session_controller.php';
 require 'Controller/Initial_controller.php';
@@ -11,92 +13,79 @@ require 'Controller/Signal_controller.php';
 require 'Controller/Deconnecte_controller.php';
 require 'Controller/Antidoublon_controller.php';
 require 'Controller/Extrait_controller.php';
-
 $action =new Initial_controller;
 $action->init();
 $action= new Lancement_session_controller;
-$action->session_go ();
-
-if (isset($_GET['action'])){       
-  $action=$_GET['action'];
-  if (isset($_GET['id'])){ $id=$_GET['id'];}
-  switch ($action) {
-
-    case 'montrer_chapitre':
-
-    if (isset($_GET['error'])){
-      $error=$_GET['error'];
-    } else {
-      $error = " ";
+$action->session_go();
+if (isset($_GET['action'])) {
+    $action=$_GET['action'];
+    if (isset($_GET['id'])) {
+        $id=$_GET['id'];
     }
-    if (isset($_GET['success'])) {
-      $success=$_GET['success'];
-    } else {
-      $success = " ";
+    switch ($action) {
+        case 'montrer_chapitre':
+            if (isset($_GET['error'])) {
+                $error=$_GET['error'];
+            } else {
+                $error = " ";
+            }
+            if (isset($_GET['success'])) {
+                $success=$_GET['success'];
+            } else {
+                $success = " ";
+            }
+            $action= new Pages_controller;
+            $action->pages($error, $success);
+            break;
+        case 'montrer_admin':
+            if (isset($_GET['error'])) {
+                $error=$_GET['error'];
+            } else {
+                $error = " ";
+            }
+            $action= new Admin_controller;
+            $action->admin($error);
+            break;
+        case 'montrer_signal':
+            $action= new Signal_controller;
+            $action->signal();
+            break;
+        case 'deco':
+            $action= new Deconnecte_controller;
+            $action->deconnecte();
+            break;
+        case 'montrer_ecriture':
+            if (isset($_GET['success'])) {
+                $success=$_GET['success'];
+            } else {
+                $success = " ";
+            }
+            $action= new Ecriture_controller;
+            $action->ecriture(0, 0, $success);
+            break;
+        case 'modification':
+            $success = " ";
+            if (isset($_GET['id'])) {
+                $id=$_GET['id'];
+                $action= new Ecriture_controller;
+                $action->ecriture($id, 'brouillon', $success);
+            }
+            if (isset($_GET['id_chapitre'])) {
+                $id_chapitre=$_GET['id_chapitre'];
+                $action= new Ecriture_controller;
+                $action->ecriture($id_chapitre, 'posts4', $success);
+            }
+            break;
+        case 'verifie':
+            require 'formulaire.controller.php';
+            break;
+        default:
+            require 'View/erreur_404.php';
+            $action= new Body_controller;
+            $action->body($content);
+            break;
     }
-    $action= new Pages_controller;
-    $action->pages($error,$success);
-    break;
-    case 'montrer_admin': 
-    if (isset($_GET['error'])){
-      $error=$_GET['error'];
-    } else {
-      $error = " ";
-    }
-    $action= new Admin_controller;
-    $action->admin ($error);
-    break;
-    case 'montrer_signal':
-    $action= new Signal_controller;
-    $action->signal ();
-    break;
-    
-    case 'deco':
-    $action= new Deconnecte_controller;
-    $action->deconnecte();
-    break;
-
-    case 'montrer_ecriture':
-    if (isset($_GET['success'])) {
-      $success=$_GET['success'];
-    } else {
-      $success = " ";
-    }
-    $action= new Ecriture_controller;
-    $action->ecriture(0,0,$success);
-    break;
-
-    case 'modification':
-    $success = " ";
-    if (isset($_GET['id'])) { 
-      $id=$_GET['id'];
-      $action= new Ecriture_controller;
-      $action->ecriture($id,'brouillon',$success);
-    } 
-    if (isset($_GET['id_chapitre'])) { 
-      $id_chapitre=$_GET['id_chapitre'];  
-      $action= new Ecriture_controller;
-      $action->ecriture($id_chapitre,'posts4', $success);
-    }
-    break;
-
-    case 'verifie':
-    require 'formulaire.controller.php';
-    break;
-
- default:
-require 'View/erreur_404.php';
-      $action= new Body_controller;
-        $action->body($content);
-
-      break;
-
-
-  }
-
-
-} else  {
-
-  $action= new Index_controller;
-  $action->index();
+} else {
+    $action= new Index_controller;
+    $action->index();
 }
