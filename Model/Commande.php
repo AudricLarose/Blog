@@ -5,7 +5,7 @@ class Commande extends Connexion {
     public function supprimer($x)
     {
         $id=$_POST['idk'];
-        $ide=intval($id);	
+        $ide=intval($id);
         $req='DELETE FROM '.$x.' WHERE id=?';
         $resultat=$this->connected()->prepare($req);
         $resultat->execute([$ide]);
@@ -18,7 +18,7 @@ class Commande extends Connexion {
         $resultat=$this-> connected()->prepare($req);
         $resultat->execute([$ide]);
         while ($row=$resultat->fetch()) {
-         $datas[]=$row;
+            $datas[]=$row;
         }
         return $datas;
     }
@@ -47,7 +47,7 @@ class Commande extends Connexion {
         $titre =$_POST['titre_admin'];
         $nom =$_POST['texte_admin'];
         if (empty($titre) || empty($nom)) {
-        header('location:index.php?action=montrer_ecriture');
+            header('location:index.php?action=montrer_ecriture');
         } else {
             $check= new init;
             $checkdoublons=$check->antidoublons($x, $titre);
@@ -56,7 +56,7 @@ class Commande extends Connexion {
                 header('location:index.php?action=montrer_ecriture&success=maj');
             } else {
                 echo'ajouter dd';
-                $req="INSERT INTO ".$x." (body, title) VALUES (?,?)"; 
+                $req="INSERT INTO ".$x." (body, title) VALUES (?,?)";
                 header('location:index.php?action=montrer_ecriture&success=ajout');
             }
             $resultat=$this->connected()->prepare($req);

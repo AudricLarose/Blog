@@ -9,18 +9,18 @@
     <h2 class='titre'>
     <?php  foreach ($bloc_text_titres as $bloc_text_titre) {
         echo $bloc_text_titre["title"];
-    }
-   ?></h2>
+}
+    ?></h2>
     <div class='texte_colonne'>
-        <?php  foreach($bloc_text_titres as $bloc_text_titre){
-       echo $bloc_text_titre['body'] ;  
+        <?php  foreach ($bloc_text_titres as $bloc_text_titre) {
+            echo $bloc_text_titre['body'] ;  
         }
         ?>
     </div>
     <div class='comment'>
         <div class="show_comment">
             <?php
-            if ($commentaires){
+            if ($commentaires) {
                 foreach ($commentaires as $commentaire) {
                     $nom=$commentaire['auteur'];
                     $auteur=$forme->forme($nom);
@@ -41,7 +41,7 @@
                 }
             } else {
                 echo' Pas de commentaire, soyez le premier a vous exprimer !';
-                }
+            }
             ?>
         </div>
     </div>

@@ -1,13 +1,13 @@
 <?php
 namespace controller ;
 
-class Initial_controller { 
+class Initial_controller {
     public function init()
     {
         if (isset($_POST['commentaire'])) {
             $action =new \model\Affichage();
             $action->commentaire();
-        }  
+        }
         if (isset($_POST['supprimer'])) {
             $action =new \model\Commande();
             $action->supprimer();
@@ -22,13 +22,13 @@ class Initial_controller {
         }
         if (isset($_POST['new_chapitre'])) {
             $action =new \model\Commande();
-            $action->ajouter ('posts4');    
-        } 
+            $action->ajouter('posts4');
+        }
         if (isset($_POST['sauvegarde'])) {
             $action =new \model\Commande();
             $titre =$_POST['titre_admin'];
             $action->ajouter('brouillon');
-        }   
+        }
         if (isset($_POST['supprimer_brouillon'])) {
             $paragraphe=new \model\Commande();
             $paragraphe->supprimer('brouillon');
@@ -47,7 +47,7 @@ class Initial_controller {
         if (isset($_POST['inscription'])) {
             $paragraphe=new \model\Affichage();
             $paragraphe->login();
-        }    
+        }
         if (isset($_POST['tentative'])) {
             $passwordcheck=new \model\Affichage();
             $passwordcheck->verifie();

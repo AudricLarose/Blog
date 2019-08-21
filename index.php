@@ -18,8 +18,8 @@ $action->init();
 $action= new Lancement_session_controller;
 $action->session_go();
 if (isset($_GET['action'])) {
-$action=$_GET['action'];
-    if (isset($_GET['id'])){
+    $action=$_GET['action'];
+    if (isset($_GET['id'])) {
         $id=$_GET['id'];
     }
     switch ($action) {
@@ -71,7 +71,7 @@ $action=$_GET['action'];
                 $action->ecriture($id, 'brouillon', $success);
             }
             if (isset($_GET['id_chapitre'])) {
-                $id_chapitre=$_GET['id_chapitre'];  
+                $id_chapitre=$_GET['id_chapitre'];
                 $action= new Ecriture_controller;
                 $action->ecriture($id_chapitre, 'posts4', $success);
             }

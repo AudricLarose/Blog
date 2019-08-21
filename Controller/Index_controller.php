@@ -1,9 +1,10 @@
 <?php
 namespace controller;
 
-class Index_controller {
-    public function index() 
-	{
+class Index_controller
+{
+    public function index()
+    {
         $content_onglet_titre="Index";
         $bdd_data= new \model\Affichage();
         $posts_datas=$bdd_data->spot('posts4');
