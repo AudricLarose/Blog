@@ -50,12 +50,13 @@ class Commande extends Connexion
         if (empty($titre) || empty($nom)) {
             header('location:index.php?action=montrer_ecriture');
         } else {
-            $check= new \controller\Antidoublon_controller();
+            $check= new \controller\antidoublon_controller();
             $checkdoublons=$check->antidoublons($x, $titre);
             if ($checkdoublons==true) {
                 $req="UPDATE $x SET body=? WHERE title=?";
                 header('location:index.php?action=montrer_ecriture&success=maj');
             } else {
+                echo'ajouter dd';
                 $req="INSERT INTO ".$x." (body, title) VALUES (?,?)";
                 header('location:index.php?action=montrer_ecriture&success=ajout');
             }
@@ -64,3 +65,4 @@ class Commande extends Connexion
         }
     }
 }
+
