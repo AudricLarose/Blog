@@ -1,5 +1,5 @@
 <?php ob_start(); 
-foreach($posts_datas as $posts_data){
+foreach ($posts_datas as $posts_data) {
     $xtrait= new \controller\Extrait_controller();
     $extrait= $xtrait->extrait($posts_data["body"], 80 );
     ?>
@@ -15,4 +15,4 @@ foreach($posts_datas as $posts_data){
     </div>
     <?php
 } 
-           $content=ob_get_clean();?>
+$content=ob_get_clean();?>
