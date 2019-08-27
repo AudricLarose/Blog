@@ -3,12 +3,6 @@ namespace controller;
 
 class Pages_controller
 {
-    public function forme($x)
-    {
-        $texte1=strtolower($x);
-        $texte_mod=ucwords($texte1);
-        return $texte_mod;
-    }
     public function pages($error, $success)
     {
         $content_onglet_titre="Chapitres";
@@ -33,21 +27,21 @@ class Pages_controller
                     $content_success= " ";
                     break;
             }
-            $menus= new \model\Affichage();
-            $bloc_text_titres = $menus->lecture('posts4');
+            $menus= new \model\Posts_Manager();
+            $bloc_text_titres = $menus->lecturePost('posts4');
             if ($bloc_text_titres) {
-                $comment=new \model\Affichage();
-                $commentaires= $comment->show_comment();
-                $forme= new Pages_controller;
+                $comment=new \model\Comments_Manager();
+                $commentaires= $comment->showComment();
+                $forme= new \outils\Tools();
                 require 'View/pagecom.view.php';
-                $body= new Body_controller;
+                $body= new \outils\Tools();
                 $body->body($content, $content_onglet_titre);
             } else {
-                throw new Exception("Impossible d'afficher la page car elle ne figure pas sur la base de données");
+                throw new \Exception ("<br> Impossible d'afficher la page car elle ne figure pas sur la base de données");
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $content = $e->getMessage();
-            $body= new Body_controller;
+            $body= new \outils\Tools();
             $body->body($content, $content_onglet_titre);
         }
     }

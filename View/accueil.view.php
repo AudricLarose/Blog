@@ -1,6 +1,5 @@
 <?php ob_start(); 
 foreach ($posts_datas as $posts_data) {
-    $xtrait= new \controller\Extrait_controller();
     $extrait= $xtrait->extrait($posts_data["body"], 80 );
     ?>
     <div class="bloc_extrait_index isRound ">

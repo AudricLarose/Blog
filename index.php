@@ -1,22 +1,16 @@
 <?php
 namespace controller;
 
-require 'Controller/session.controller.php';
-require 'Controller/Lancement_session_controller.php';
+require 'Tools/tools.php';
 require 'Controller/Initial_controller.php';
-require 'Controller/Index_controller.php';
-require 'Controller/Body_controller.php';
 require 'Controller/Admin_controller.php';
 require 'Controller/Pages_controller.php';
 require 'Controller/Ecriture_controller.php';
 require 'Controller/Signal_controller.php';
-require 'Controller/Deconnecte_controller.php';
-require 'Controller/Antidoublon_controller.php';
-require 'Controller/Extrait_controller.php';
-$action =new Initial_controller;
+
+$action= new \outils\Tools();
 $action->init();
-$action= new Lancement_session_controller;
-$action->session_go();
+session_start();
 if (isset($_GET['action'])) {
     $action=$_GET['action'];
     if (isset($_GET['id'])) {
@@ -51,7 +45,7 @@ if (isset($_GET['action'])) {
             $action->signal();
             break;
         case 'deco':
-            $action= new Deconnecte_controller;
+            $action= new Initial_controller;
             $action->deconnecte();
             break;
         case 'montrer_ecriture':
@@ -81,11 +75,12 @@ if (isset($_GET['action'])) {
             break;
         default:
             require 'View/erreur_404.php';
-            $action= new Body_controller;
-            $action->body($content);
+            $action= new \outils\Tools();
+            $content_onglet_titre="erreur_404";
+            $action->body($content,$content_onglet_titre);
             break;
     }
 } else {
-    $action= new Index_controller;
+    $action= new Initial_controller;
     $action->index();
 }

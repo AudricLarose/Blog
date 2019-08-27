@@ -6,7 +6,8 @@ class Ecriture_controller
     public function ecriture($a, $b, $success)
     {
         $content_onglet_titre="Creation";
-        $session=sessionactive();
+        $sessions=new \outils\Tools();
+        $session=$sessions->sessionactive();
         if ($session=='ok') {
             switch ($success) {
                 case 'ajout':
@@ -21,16 +22,16 @@ class Ecriture_controller
             }
             if ($a!==0) {
                 echo 'ok';
-                $brouill= new \model\Affichage();
-                $x=$brouill->lecture($b);
+                $brouill= new \model\Posts_Manager();
+                $x=$brouill->lecturePost($b);
                 $xt=$x[0]["title"];
                 $xb=$x[0]["body"];
             } elseif ($a===0) {
                 $xt= ' ';
                 $xb= ' ';
             }
-            $brouill= new \model\Affichage();
-            $brouillon=$brouill->spot('brouillon');
+            $brouill= new \model\Posts_Manager();
+            $brouillon=$brouill->getPost('brouillon');
             if (isset($brouillon)) {
                 require 'View/brouillon.admin.view.php';
             } else {
@@ -40,7 +41,7 @@ class Ecriture_controller
         } else {
             require 'View/erreur_404.php';
         }
-        $body= new Body_controller;
+        $body=new \outils\Tools();
         $body->body($content, $content_onglet_titre);
     }
 }

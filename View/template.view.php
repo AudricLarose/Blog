@@ -39,7 +39,6 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <?php
                 foreach ($posts_datas as $posts_data) {
-                    $xtrait= new \controller\Extrait_controller();
                     $titre_extrait= $xtrait->extrait($posts_data["title"], 4);
                     ?>
                   <a class="dropdown-item" href="index.php?action=montrer_chapitre&id=<?php echo $posts_data['id'] ?>">
