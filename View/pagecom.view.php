@@ -34,7 +34,7 @@
                     </div>
                     <input name="idke" type="hidden" value=' <?php echo $id ?>' ></input>
                     <button type="submit" name="signaler">signaler</button>
-                    <input name="idk" type="hidden" value="<?php echo $commentaire['id'] ?>"><input>
+                    <input name="idk" type="hidden" value="<?php echo $commentaire['id'] ?>"></input>
                 </form>
                 <?php
                 }

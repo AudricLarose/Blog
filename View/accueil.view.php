@@ -1,6 +1,6 @@
 <?php ob_start(); 
 foreach ($posts_datas as $posts_data) {
-    $extrait= $xtrait->extrait($posts_data["body"], 80 );
+    $extrait= $Get_Extrait->extrait($posts_data["body"], 80 );
     ?>
     <div class="bloc_extrait_index isRound ">
         <div class="bloc_titre isRound isLightBlue  d-flex justify-content-center align-item-center ">

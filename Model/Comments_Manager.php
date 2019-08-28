@@ -3,17 +3,17 @@ namespace model;
 
 class Comments_Manager extends Connexion 
 {
-    public function supprimerComment($x)
+    public function supprimerComment()
     {
         $id=$_POST['idk'];
         $ide=intval($id);
-        $req='DELETE FROM '.$x.' WHERE id=?';
+        $req='DELETE FROM  commentaire WHERE id=?';
         $resultat=$this->connected()->prepare($req);
         $resultat->execute([$ide]);
     }
-    public function additionCommentSignal($y, $x)
+    public function additionCommentSignal($y)
     {
-        $req='SELECT SUM('.$y.') FROM '.$x ;
+        $req='SELECT SUM('.$y.') FROM commentaire';
         $resultat=$this->connected()->prepare($req);
         $resultat->execute();
         while ($x=$resultat->fetch()) {

@@ -30,8 +30,8 @@ class Ecriture_controller
                 $xt= ' ';
                 $xb= ' ';
             }
-            $brouill= new \model\Posts_Manager();
-            $brouillon=$brouill->getPost('brouillon');
+            $getBrouillon= new \model\Posts_Manager();
+            $brouillon=$getBrouillon->getPost('brouillon');
             if (isset($brouillon)) {
                 require 'View/brouillon.admin.view.php';
             } else {

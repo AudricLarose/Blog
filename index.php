@@ -75,7 +75,6 @@ if (isset($_GET['action'])) {
             break;
         default:
             require 'View/erreur_404.php';
-            $action= new \outils\Tools();
             $content_onglet_titre="erreur_404";
             $action->body($content,$content_onglet_titre);
             break;

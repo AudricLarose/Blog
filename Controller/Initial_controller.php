@@ -19,10 +19,10 @@ class Initial_controller
         $content_onglet_titre="Index";
         $bdd_data= new \model\Posts_Manager();
         $posts_datas=$bdd_data->getPost('posts4');
-        $xtrait= new \outils\Tools();
+        $Get_Extrait= new \outils\Tools();
         require 'View/accueil.view.php';
-        $body=new \outils\Tools();
-        $body->body($content, $content_onglet_titre);
+        $insertion_template=new \outils\Tools();
+        $insertion_template->body($content, $content_onglet_titre);
     }
 
 }

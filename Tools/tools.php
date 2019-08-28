@@ -34,8 +34,8 @@ class Tools
         $bdd_data= new \model\Posts_Manager();
         $posts_datas=$bdd_data->getPost('posts4');
         $bdd_data_comment= new \model\Comments_Manager();
-        $additions=$bdd_data_comment->additionCommentSignal('signalement', 'commentaire');
-        $xtrait= new \outils\Tools();
+        $additions=$bdd_data_comment->additionCommentSignal('signalement');
+        $Get_Extrait= new \outils\Tools();
         require "View/template.view.php";
     }
     public function sessionactive() 
@@ -93,7 +93,7 @@ class Tools
         }
         if (isset($_POST['supprimer_comment'])) {
             $paragraphe=new \model\Comments_Manager();
-            $paragraphe->supprimerComment('commentaire');
+            $paragraphe->supprimerComment();
         }
         if (isset($_POST['inscription'])) {
             $paragraphe=new \model\Users_Manager();
