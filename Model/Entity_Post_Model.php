@@ -6,6 +6,8 @@ class Entity_Post_Model
 	private $id;
 	private $title;
 	private $body;
+	
+
 
 	public function getId() {
 		return $this->id;

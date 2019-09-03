@@ -5,6 +5,8 @@ require './Model/Posts_Manager.php';
 require './Model/Comments_Manager.php';
 require './Model/Users_Manager.php';
 require './Model/Entity_Post_Model.php';
+require './Model/Entity_Comment_Model.php';
+
 
 
 class Initial_controller
@@ -21,7 +23,6 @@ class Initial_controller
         $content_onglet_titre="Index";
         $bdd_data= new \model\Posts_Manager();
         $posts_datas=$bdd_data->getPost('posts4');
-        var_dump($posts_datas);
         $Get_Extrait= new \outils\Tools();
         require 'View/accueil.view.php';
         $insertion_template=new \outils\Tools();

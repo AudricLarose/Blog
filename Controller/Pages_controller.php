@@ -39,6 +39,7 @@ class Pages_controller
                 $comment=new \model\Comments_Manager();
                 $commentaires= $comment->showComment();
                 $forme= new \outils\Tools();
+                var_dump($commentaires);
                 require 'View/pagecom.view.php';
                 $body= new \outils\Tools();
                 $body->body($content, $content_onglet_titre);

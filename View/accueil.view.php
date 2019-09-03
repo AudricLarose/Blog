@@ -1,6 +1,5 @@
 <?php ob_start(); 
 foreach ($posts_datas as $posts_data) {
-    var_dump($posts_data);
     $extrait= $Get_Extrait->extrait($posts_data->getBody(), 80 );
     ?>
     <div class="bloc_extrait_index isRound ">

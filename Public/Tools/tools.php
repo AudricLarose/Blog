@@ -1,14 +1,16 @@
 <?php
 namespace outils ;
+
 class Tools
 {
-    public function antidoublons($x, $y)
+    public function antidoublons($x,$y)
     {
         $data= new \model\Posts_Manager();
         $recherche= $data->getPost($x);
         if (isset($recherche)) {
             foreach ($recherche as $recherches) {
-                if (in_array($y, $recherches)) {
+                $z=$recherches->getTitle();
+                if ($y==$z) {
                     return true;
                     exit();
                 }
@@ -33,7 +35,6 @@ class Tools
         }
         $bdd_data= new \model\Posts_Manager();
         $posts_datas=$bdd_data->getPost('posts4');              // cherche tt cellule de tableau de ma base
-        var_dump($posts_datas);
         $bdd_data_comment= new \model\Comments_Manager();
         $additions=$bdd_data_comment->additionCommentSignal('signalement'); // calculer nombre de signalement 
         $Get_Extrait= new \outils\Tools();

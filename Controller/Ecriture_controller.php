@@ -29,11 +29,14 @@ class Ecriture_controller
             if ($a!==0) {
                 $brouill= new \model\Posts_Manager();
                 $x=$brouill->lecturePost($b);
-                $xt=$x[0]["title"];
-                $xb=$x[0]["body"];
+                $xt=$x->getTitle();
+                var_dump($xt);
+                $xb=$x->getBody();
+                $xi=$x->getId();
             } elseif ($a===0) {
                 $xt= ' ';
                 $xb= ' ';
+                $xi=' ';
             }
             $getBrouillon= new \model\Posts_Manager();
             $brouillon=$getBrouillon->getPost('brouillon');

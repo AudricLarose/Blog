@@ -4,7 +4,8 @@
 </div>
 <form action="index.php?action=montrer_ecriture" method="POST"> Titre de la publication:
     <br>
-    <input type="text" name="titre_admin" id="title" value="<?php echo $xt; ?>" />
+    <input type="text" name="titre_admin" id="title" value="<?php echo $xt;?>" />
+    <input name="idk" type="hidden" value="<?php echo $xi;?>" />
     <br> Votre publication:
     <br>
     <textarea name="texte_admin" cols="70" rows="20" id="textarea"><?php echo $xb;?>

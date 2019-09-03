@@ -8,29 +8,31 @@
     </h2>
     <div class='texte_colonne'>
     <?php echo $bloc_text_titres->getBody();?>
-}
-        ?>
+
     </div>
     <div class='comment'>
         <div class="show_comment">
             <?php
             if ($commentaires) {
                 foreach ($commentaires as $commentaire) {
-                    $nom=$commentaire['auteur'];
+                    $nom=$commentaire->getAuteur();
                     $auteur=$forme->forme($nom);
+                    var_dump($commentaire->getId());
             ?>
                 <form action='index.php' method='POST'><br>
                     <div class="auteur"><strong><?php echo  $auteur ?></strong>
                     </div>
                     <div class="date">
-                        <?php echo $commentaire['date'] ?>
+                        <?php echo $commentaire->getDate() ?>
                     </div>
                     <div class="conversa">
-                        <?php echo $commentaire['commentaire'] ?>
+                        <?php echo $commentaire->getCommentaire() ?>
                     </div>
-                    <input name="idke" type="hidden" value=' <?php echo $id ?>' ></input>
+                    <input name="idke" type="hidden" value='<?php echo $id ?>' ></input>
                     <button type="submit" name="signaler">signaler</button>
-                    <input name="idk" type="hidden" value="<?php echo $commentaire['id'] ?>"></input>
+                    <input name="idk" type="hidden" value='<?php echo $commentaire->getId() ?>'></input>
+                    <?php var_dump($commentaire->getId());?>
+
                 </form>
                 <?php
                 }

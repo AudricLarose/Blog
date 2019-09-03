@@ -10,13 +10,13 @@
         ?>
       <tr>
         <td class="center">
-            <a href="index.php?action=modification&id=<?= $brouillons['id'] ?>">
+            <a href="index.php?action=modification&id=<?= $brouillons->getId()?>">
                 <p>
-                    <?= $brouillons['title'] ?>
+                    <?=$brouillons->getTitle()?>
                 </p>
             </a>
             <form action='index.php?action=montrer_ecriture' method='POST'>
-                <input name="idk" type="hidden" value="<?= $brouillons['id']?>" />
+                <input name="idk" type="hidden" value="<?= $brouillons->getId();?>" />
                 <button name='supprimer_brouillon' class='suppression' value='supprimer'>Supprimer</button>
             </form>
         </td>

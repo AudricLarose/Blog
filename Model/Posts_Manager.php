@@ -47,7 +47,6 @@ class Posts_Manager extends Connexion
                 while ($x=$resultat->fetch()) {
                     $data[]=$x;
                 }
-                var_dump($data);
                 foreach ($data as $datas) {
                     $data_hydrated= new \model\Entity_Post_Model();
                     $data_hydrated->hydratation($datas);
@@ -60,9 +59,11 @@ class Posts_Manager extends Connexion
     {
         $titre =$_POST['titre_admin'];
         $nom =$_POST['texte_admin'];
+        $id =$_POST['idk'];
         if (empty($titre) || empty($nom)) {
             header('location:index.php?action=montrer_ecriture');
         } else {
+
             $check= new \outils\Tools();
             $checkdoublons=$check->antidoublons($x, $titre);
             if ($checkdoublons==true) {

@@ -32,7 +32,12 @@ class Comments_Manager extends Connexion
             while ($x=$resultat->fetch()) {
                 $data[]=$x;
             }
-                return $data;
+                foreach ($data as $datas) {
+                    $data_hydrated= new \model\Entity_Comment_Model();
+                    $data_hydrated->hydratation($datas);
+                    $datae[]=$data_hydrated;
+            }
+            return $datae;
         }
     }
     public function modifierComment()
@@ -78,7 +83,12 @@ class Comments_Manager extends Connexion
             while ($x=$resultat->fetch()) {
                 $data[]=$x;
             }
-            return $data;
+            foreach ($data as $datas) {
+                    $data_hydrated= new \model\Entity_Comment_Model();
+                    $data_hydrated->hydratation($datas);
+                    $datae[]=$data_hydrated;
+            }
+            return $datae;
         }
     }
     public function commenter()

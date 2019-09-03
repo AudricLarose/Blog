@@ -13,12 +13,13 @@
         ?>
        <tr>
         <td class="center">
-            <?php echo $tables['commentaire'] ;?>
+            <?php 
+            echo $tables->getCommentaire();?>
         </td>
         <td class="center">
-            <?php echo $tables['signalement'] ;?>
+            <?php echo $tables->getSignalement() ;?>
             <form action="index.php?action=montrer_signal" method="POST">
-                <input name="idk" type="hidden" value=" <?php echo $tables['id'] ?>" />
+                <input name="idk" type="hidden" value=" <?php echo $tables->getId() ?>" />
                 <button name='supprimer_comment' value='supprimer commentaire'>supprimer</button>
             </form>
         </td>
