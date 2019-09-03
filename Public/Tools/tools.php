@@ -32,9 +32,10 @@ class Tools
             $content_invite_admin='  Bonjour, invité.';
         }
         $bdd_data= new \model\Posts_Manager();
-        $posts_datas=$bdd_data->getPost('posts4');
+        $posts_datas=$bdd_data->getPost('posts4');              // cherche tt cellule de tableau de ma base
+        var_dump($posts_datas);
         $bdd_data_comment= new \model\Comments_Manager();
-        $additions=$bdd_data_comment->additionCommentSignal('signalement');
+        $additions=$bdd_data_comment->additionCommentSignal('signalement'); // calculer nombre de signalement 
         $Get_Extrait= new \outils\Tools();
         require "View/template.view.php";
     }
@@ -59,14 +60,6 @@ class Tools
             $action =new \model\Comments_Manager();
             $action->commenter();
         }
-        // if (isset($_POST['supprimer'])) {
-        //     $action =new \model\Commande();
-        //     $action->supprimer_comm();
-        // }
-        // if (isset($_POST['modifier'])) {
-        //     $paragraphe=new \model\Commande();
-        //     $paragraphe->transforme();
-        // }
         if (isset($_POST['signaler'])) {
             $paragraphe=new \model\Comments_Manager();
             $paragraphe->signalerComment();
@@ -101,19 +94,7 @@ class Tools
         }
         if (isset($_POST['tentative'])) {
             $passwordcheck=new \model\Users_Manager();
-            $passwordcheck->verifie();
+            $passwordcheck->verifie();        
         }
-        // if (isset($_POST['chercher'])) {
-        //     $paragraphe=new \model\Affichage();
-        //     $paragraphe->recherche();
-        // }
-        // if (isset($_POST['takemail'])) {
-        //     $paragraphe=new \model\Affichage();
-        //     $paragraphe->mailing();
-        // }
-        // if (isset($_POST['compter'])) {
-        //     $paragraphe=new \model\Affichage();
-        //     $paragraphe->compte();
-        // }
-    }
+    }    
 }

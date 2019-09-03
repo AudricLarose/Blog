@@ -13,7 +13,12 @@ class Posts_Manager extends Connexion
             while ($x=$resultat->fetch()) {
                 $data[]=$x;
             }
-            return $data;
+            foreach ($data as $datas) {
+                    $data_hydrated= new \model\Entity_Post_Model();
+                    $data_hydrated->hydratation($datas);
+                    $datae[]=$data_hydrated;
+            }
+            return $datae;
         }
     }
     public function supprimerPost($x)
@@ -23,6 +28,8 @@ class Posts_Manager extends Connexion
         $req='DELETE FROM '.$x.' WHERE id=?';
         $resultat=$this->connected()->prepare($req);
         $resultat->execute([$ide]);
+        header('location:index.php?action=montrer_ecriture&success=suppression');
+
     }
     public function lecturePost($x)
     {
@@ -40,7 +47,12 @@ class Posts_Manager extends Connexion
                 while ($x=$resultat->fetch()) {
                     $data[]=$x;
                 }
-                return $data;
+                var_dump($data);
+                foreach ($data as $datas) {
+                    $data_hydrated= new \model\Entity_Post_Model();
+                    $data_hydrated->hydratation($datas);
+                    }
+                return $data_hydrated;
             }
         }
     }

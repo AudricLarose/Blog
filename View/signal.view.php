@@ -1,5 +1,8 @@
 <?php ob_start();?>
 <h1> Signalements</h1>
+<div class='isBlue'>
+    <?= $content_feedback;?>
+</div>
 <table>
     <tr>
         <th class="center">message</th>

@@ -1,7 +1,7 @@
 <?php
 namespace controller;
 
-require 'Tools/tools.php';
+require 'Public/Tools/tools.php';
 require 'Controller/Initial_controller.php';
 require 'Controller/Admin_controller.php';
 require 'Controller/Pages_controller.php';
@@ -15,7 +15,7 @@ if (isset($_GET['action'])) {
     $action=$_GET['action'];
     if (isset($_GET['id'])) {
         $id=$_GET['id'];
-    }
+    } 
     switch ($action) {
         case 'montrer_chapitre':
             if (isset($_GET['error'])) {
@@ -41,8 +41,13 @@ if (isset($_GET['action'])) {
             $action->admin($error);
             break;
         case 'montrer_signal':
+            if (isset($_GET['success'])) {
+                $success=$_GET['success'];
+            } else {
+                $success = " ";
+            }
             $action= new Signal_controller;
-            $action->signal();
+            $action->signal($success);
             break;
         case 'deco':
             $action= new Initial_controller;
@@ -76,7 +81,8 @@ if (isset($_GET['action'])) {
         default:
             require 'View/erreur_404.php';
             $content_onglet_titre="erreur_404";
-            $action->body($content,$content_onglet_titre);
+            $body= new \outils\Tools();
+            $body->body($content,$content_onglet_titre);
             break;
     }
 } else {

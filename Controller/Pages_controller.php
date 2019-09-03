@@ -7,6 +7,12 @@ class Pages_controller
     {
         $content_onglet_titre="Chapitres";
         try {
+            if (!isset($_GET["id"])) {
+            require 'View/erreur_404.php';
+            $content_onglet_titre="erreur_404";
+            $body= new \outils\Tools();
+            $body->body($content,$content_onglet_titre);
+            }
             $id=$_GET["id"];
             switch ($error) {
                 case 'champs_vide':

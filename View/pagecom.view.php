@@ -4,14 +4,10 @@
         <?= $content_success; ?>
     </div><br><br>
     <h2 class='titre'>
-    <?php  foreach ($bloc_text_titres as $bloc_text_titre) {
-        echo $bloc_text_titre["title"];
-    }
-    ?>
+    <?php echo $bloc_text_titres->getTitle();?>
     </h2>
     <div class='texte_colonne'>
-        <?php  foreach ($bloc_text_titres as $bloc_text_titre) {
-            echo $bloc_text_titre['body'];
+    <?php echo $bloc_text_titres->getBody();?>
 }
         ?>
     </div>

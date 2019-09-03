@@ -10,6 +10,8 @@ class Comments_Manager extends Connexion
         $req='DELETE FROM  commentaire WHERE id=?';
         $resultat=$this->connected()->prepare($req);
         $resultat->execute([$ide]);
+        header('location:index.php?action=montrer_signal&success=supprimer');
+
     }
     public function additionCommentSignal($y)
     {

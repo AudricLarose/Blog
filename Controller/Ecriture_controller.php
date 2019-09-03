@@ -16,12 +16,17 @@ class Ecriture_controller
                 case 'maj':
                     $content_feedback=' mise a jour effectué !';
                     break;
+                    case 'suppression':
+                    $content_feedback= 'La suppression a bien été effectué';
+                    break;
                 case ' ':
+                    $content_feedback= " ";
+                    break;
+                default:
                     $content_feedback= " ";
                     break;
             }
             if ($a!==0) {
-                echo 'ok';
                 $brouill= new \model\Posts_Manager();
                 $x=$brouill->lecturePost($b);
                 $xt=$x[0]["title"];

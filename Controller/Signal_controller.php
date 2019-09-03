@@ -3,8 +3,19 @@ namespace controller;
 
 class Signal_controller
 {
-    public function signal()
+    public function signal($success)
     {
+        switch ($success) {
+            case 'supprimer':
+                $content_feedback= 'La suppression a bien été effectué';
+                break;
+            case ' ':
+                $content_feedback= " ";
+                break;
+            default:
+                $content_feedback= " ";
+                break;
+        }
         $content_onglet_titre="Signal";
         $sessions=new \outils\Tools();
         $session=$sessions->sessionactive();
