@@ -8,7 +8,6 @@
     </h2>
     <div class='texte_colonne'>
     <?php echo $bloc_text_titres->getBody();?>
-
     </div>
     <div class='comment'>
         <div class="show_comment">
@@ -34,7 +33,7 @@
                     <?php var_dump($commentaire->getId());?>
 
                 </form>
-                <?php
+            <?php
                 }
             } else {
                 echo' Pas de commentaire, soyez le premier a vous exprimer !';
@@ -54,5 +53,5 @@
             <button type="submit" name="commentaire">commenter</button><br>
         </form>
     </div>
-        <?php $content=ob_get_clean();?>
+<?php $content=ob_get_clean();?>
         

@@ -1,4 +1,4 @@
-<?php ob_start(); 
+<?php ob_start();
 foreach ($posts_datas as $posts_data) {
     $extrait= $Get_Extrait->extrait($posts_data->getBody(), 80 );
     ?>
@@ -13,5 +13,5 @@ foreach ($posts_datas as $posts_data) {
         </div>
     </div>
     <?php
-} 
+}
 $content=ob_get_clean();?>

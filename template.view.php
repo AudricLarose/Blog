@@ -19,8 +19,8 @@
   </script>
   <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="Public/css/blog.css">
-  <link rel="stylesheet" href="Public/css/bibliotheque_UX.css"> </head>
+  <link rel="stylesheet" href="public/css/blog.css">
+  <link rel="stylesheet" href="public/css/bibliotheque_UX.css"> </head>
   <body>
     <div class="bloc_principal" id="mydiv">
       <div class="bloc_header isRound d-flex justify-content-center align-item-center align-content-center hidden">
@@ -96,6 +96,6 @@
             </div>
           </div>
         </div>
-        <script src="Public/js/appli.js"></script>
+        <script src="public/js/appli.js"></script>
       </body>
 </html>

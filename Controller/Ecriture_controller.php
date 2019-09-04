@@ -19,6 +19,9 @@ class Ecriture_controller
                     case 'suppression':
                     $content_feedback= 'La suppression a bien été effectué';
                     break;
+                case 'empty':
+                    $content_feedback= " Vous devez inscrire des caracteres dans les espaces vides !";
+                    break;
                 case ' ':
                     $content_feedback= " ";
                     break;
@@ -30,7 +33,6 @@ class Ecriture_controller
                 $brouill= new \model\Posts_Manager();
                 $x=$brouill->lecturePost($b);
                 $xt=$x->getTitle();
-                var_dump($xt);
                 $xb=$x->getBody();
                 $xi=$x->getId();
             } elseif ($a===0) {

@@ -60,8 +60,8 @@ class Posts_Manager extends Connexion
         $titre =$_POST['titre_admin'];
         $nom =$_POST['texte_admin'];
         $id =$_POST['idk'];
-        if (empty($titre) || empty($nom)) {
-            header('location:index.php?action=montrer_ecriture');
+        if (empty($titre) || empty($nom) || ($titre==" ") || ($nom=='')) {
+            header('location:index.php?action=montrer_ecriture&success=empty');
         } else {
 
             $check= new \outils\Tools();

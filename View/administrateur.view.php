@@ -14,4 +14,4 @@
         <button type='submit' name='tentative'>se connecter</button>
         <br> </form>
     </div>
-    <?php $content=ob_get_clean();?>
+<?php $content=ob_get_clean();?>

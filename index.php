@@ -1,7 +1,7 @@
 <?php
 namespace controller;
 
-require 'Public/Tools/tools.php';
+require 'Public/Tools/tools.php';                           //definitions
 require 'Controller/Initial_controller.php';
 require 'Controller/Admin_controller.php';
 require 'Controller/Pages_controller.php';
@@ -28,8 +28,8 @@ if (isset($_GET['action'])) {
             } else {
                 $success = " ";
             }
-            $action= new Pages_controller;
-            $action->pages($error, $success);
+            $action= new Pages_controller;       //via classe
+            $action->pages($error, $success);   // methode
             break;
         case 'montrer_admin':
             if (isset($_GET['error'])) {

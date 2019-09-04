@@ -52,16 +52,6 @@ class Comments_Manager extends Connexion
         }
         return $datas;
     }
-    // public function transforme()
-    // {
-    //     $body_modifier=$_POST['body'];
-    //     $id=$_POST['id'];
-    //     $idp=$_POST['idp'];
-    //     $ide=intval($id);
-    //     $req="UPDATE commentaire SET commentaire='$body_modifier' WHERE id=?";
-    //     $resultat=$this-> connected()->prepare($req);
-    //     $resultat->execute([$ide]);
-    // }
     public function signalerComment()
     {
         $id=$_POST['idk'];
