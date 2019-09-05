@@ -16,7 +16,6 @@
                 foreach ($commentaires as $commentaire) {
                     $nom=$commentaire->getAuteur();
                     $auteur=$forme->forme($nom);
-                    var_dump($commentaire->getId());
             ?>
                 <form action='index.php' method='POST'><br>
                     <div class="auteur"><strong><?php echo  $auteur ?></strong>
@@ -30,7 +29,6 @@
                     <input name="idke" type="hidden" value='<?php echo $id ?>' ></input>
                     <button type="submit" name="signaler">signaler</button>
                     <input name="idk" type="hidden" value='<?php echo $commentaire->getId() ?>'></input>
-                    <?php var_dump($commentaire->getId());?>
 
                 </form>
             <?php

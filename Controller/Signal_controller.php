@@ -22,7 +22,6 @@ class Signal_controller
         if ($session=='ok') {
             $comment= new \model\Comments_Manager();
             $table=$comment->getComment();
-            var_dump($table);
             if (!empty($table)) {
                 require 'View/signal.view.php';
             } else {
